@@ -310,7 +310,27 @@
 
 
         /* Footer */
-        footer { background: var(--card-bg); text-align: center; padding: 20px 0; margin-top: 40px; border-top: 1px solid var(--border-color); }
+        footer {
+            background: var(--card-bg);
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--border-color);
+        }
+        footer p {
+            margin: 5px 0;
+        }
+        .dev-info {
+            font-size: 0.85rem;
+            color: var(--secondary-color);
+        }
+        .dev-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .dev-info a:hover {
+            text-decoration: underline;
+        }
 
         /* Responsive */
         @media (max-width: 768px) {
@@ -639,6 +659,7 @@
     <footer>
         <div class="container">
             <p>&copy; ২০২৫ | প্রত্যয় ইসলামিক পাঠাগার। সর্বসত্ত্ব সংরক্ষিত।</p>
+            <p class="dev-info">ডেভেলপ করেছেন: <a href="#" target="_blank">আপনার নাম</a></p>
         </div>
     </footer>
 
