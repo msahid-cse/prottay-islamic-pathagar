@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>প্রত্যয় ইসলামিক পাঠাগার</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Google Font & Basic Styles */
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+            scroll-behavior: smooth;
+        }
+
+        /* New Color Palette & Variables */
+        :root {
+            --primary-color: #1ABC9C; /* Teal Green */
+            --secondary-color: #566573;
+            --background-color: #F4F6F7;
+            --text-color: #34495E;
+            --card-bg: #ffffff;
+            --border-color: #e0e0e0;
+            --shadow: 0 4px 12px rgba(0,0,0,0.08);
+            --primary-hover: #16A085;
+        }
+
+        body.dark-mode {
+            --primary-color: #48C9B0;
+            --secondary-color: #99A3A4;
+            --background-color: #17202A;
+            --text-color: #EAECEE;
+            --card-bg: #212F3D;
+            --border-color: #444;
+            --shadow: 0 4px 12px rgba(0,0,0,0.3);
+            --primary-hover: #1ABC9C;
+        }
+
+        /* Basic Styles */
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        .nav-logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        .nav-logo span {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-item {
+            margin-left: 25px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+            padding-bottom: 5px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+        .hamburger { display: none; cursor: pointer; }
+        .bar { display: block; width: 25px; height: 3px; margin: 5px auto; background-color: var(--text-color); transition: all 0.3s ease-in-out; }
+
+        /* Theme Switcher */
+        .theme-switcher { display: flex; align-items: center; margin-left: 20px; }
+        #theme-toggle { display: none; }
+        .theme-toggle-label { cursor: pointer; width: 50px; height: 25px; background: #ccc; display: block; border-radius: 100px; position: relative; }
+        .theme-toggle-label::after { content: ''; position: absolute; top: 2.5px; left: 2.5px; width: 20px; height: 20px; background: #fff; border-radius: 50%; transition: 0.3s; }
+        #theme-toggle:checked + .theme-toggle-label { background: var(--primary-color); }
+        #theme-toggle:checked + .theme-toggle-label::after { left: calc(100% - 2.5px); transform: translateX(-100%); }
+
+        /* Hero Section */
+        .hero-section { text-align: center; padding: 80px 0; background-color: var(--card-bg); }
+        .hero-section h1 { font-size: 3rem; margin-bottom: 10px; color: var(--primary-color); }
+        .hero-section .tagline { font-size: 1.2rem; margin-bottom: 20px; }
+        .hero-section .description { max-width: 700px; margin: 0 auto 30px; line-height: 1.7; }
+        .btn { padding: 12px 25px; text-decoration: none; border-radius: 50px; font-weight: 600; transition: all 0.3s; margin: 5px; display: inline-block; border: 2px solid var(--primary-color); }
+        .btn-primary { background-color: var(--primary-color); color: white; }
+        .btn-primary:hover { background-color: var(--primary-hover); border-color: var(--primary-hover); }
+        .btn-secondary { background-color: transparent; color: var(--text-color); border: 2px solid var(--border-color); }
+        .btn-secondary:hover { background-color: var(--primary-color); color: white; border-color: var(--primary-color); }
+
+        /* Activities Section */
+        .activities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
+        .activity-card { background: var(--card-bg); padding: 25px; border-radius: 8px; text-align: center; box-shadow: var(--shadow); border-bottom: 4px solid var(--primary-color); transition: transform 0.3s; }
+        .activity-card:hover { transform: translateY(-5px); }
+        .activity-card h3 { margin-top: 0; color: var(--primary-color); }
+
+        /* Fund Section */
+        #fund { background-color: var(--card-bg); }
+        .fund-summary { display: flex; justify-content: center; gap: 30px; margin-bottom: 40px; text-align: center; }
+        .fund-card { padding: 20px 40px; border-radius: 8px; background-color: var(--background-color); }
+        .fund-card h3 { margin: 0 0 10px 0; font-size: 1.2rem; color: var(--secondary-color); }
+        .fund-card p { margin: 0; font-size: 2rem; font-weight: 700; color: var(--primary-color); }
+        .fund-details table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .fund-details th, .fund-details td { padding: 12px 15px; text-align: left; border-bottom: 1px solid var(--border-color); }
+        .fund-details th { background-color: var(--background-color); font-weight: 600; }
+        .fund-details tr:last-child td { border-bottom: none; }
+        .fund-details tr:hover { background-color: var(--background-color); }
+        .fund-details .income { color: #2ECC71; }
+        .fund-details .expense { color: #E74C3C; }
+
+        /* Community Section */
+        .year-tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; }
+        .tab-btn { background-color: var(--card-bg); border: 1px solid var(--border-color); padding: 10px 20px; border-radius: 50px; cursor: pointer; transition: all 0.3s; font-weight: 500; }
+        .tab-btn:hover { background-color: var(--primary-hover); color: white; }
+        .tab-btn.active { background-color: var(--primary-color); color: white; border-color: var(--primary-color); }
+        .committee-content { display: none; }
+        .committee-content.active { display: block; }
+        .community-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; }
+        .member-card { background: var(--card-bg); text-align: center; padding: 20px; border-radius: 8px; box-shadow: var(--shadow); transition: transform 0.3s; }
+        .member-card:hover { transform: translateY(-5px); }
+        .member-card img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 4px solid var(--primary-color); }
+        .member-card h4 { margin: 0 0 5px 0; }
+        .member-card p { margin: 0; color: var(--secondary-color); }
+
+        /* Gallery Section */
+        .gallery-event { margin-bottom: 50px; }
+        .gallery-event h3 { text-align: center; margin-bottom: 20px; font-size: 1.8rem; }
+        .gallery-carousel { position: relative; max-width: 800px; margin: auto; overflow: hidden; border-radius: 8px; box-shadow: var(--shadow); }
+        .carousel-images { display: flex; transition: transform 0.5s ease-in-out; }
+        .carousel-images img { width: 100%; flex-shrink: 0; display: block; }
+        .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background-color: rgba(0, 0, 0, 0.5); color: white; border: none; padding: 10px 15px; font-size: 24px; cursor: pointer; z-index: 10; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; }
+        .carousel-btn:hover { background-color: rgba(0, 0, 0, 0.8); }
+        .prev { left: 10px; }
+        .next { right: 10px; }
+
+        /* Donation Section */
+        #donation { background-color: var(--card-bg); }
+        .donation-methods { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; text-align: center; }
+        .donation-card { background-color: var(--background-color); padding: 30px; border-radius: 8px; box-shadow: var(--shadow); }
+        .donation-card img { max-height: 50px; margin-bottom: 15px; }
+
+        /* Contact & Footer */
+        .contact-info { text-align: center; font-size: 1.1rem; line-height: 1.8; }
+        footer { background: var(--card-bg); text-align: center; padding: 20px 0; margin-top: 40px; border-top: 1px solid var(--border-color); }
+
+        /* Responsive (Mobile View) */
+        @media (max-width: 768px) {
+            .nav-menu { position: fixed; left: -100%; top: 70px; flex-direction: column; background-color: var(--background-color); width: 100%; height: calc(100vh - 70px); text-align: center; transition: 0.3s; box-shadow: var(--shadow); padding-top: 20px; }
+            .nav-menu.active { left: 0; }
+            .nav-item { margin: 20px 0; }
+            .hamburger { display: block; }
+            .hamburger.active .bar:nth-child(2) { opacity: 0; }
+            .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+            .hero-section h1 { font-size: 2.2rem; }
+            .section-title { font-size: 2rem; }
+            .fund-summary { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="#about" class="nav-logo">
+                    <img src="https://placehold.co/100x100/1ABC9C/FFFFFF?text=P" alt="লোগো">
+                    <span>প্রত্যয় ইসলামিক পাঠাগার</span>
+                </a>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="#about" class="nav-link">আমাদের সম্পর্কে</a></li>
+                    <li class="nav-item"><a href="#activities" class="nav-link">কার্যক্রম</a></li>
+                    <li class="nav-item"><a href="#fund" class="nav-link">ফান্ড</a></li>
+                    <li class="nav-item"><a href="#community" class="nav-link">কমিউনিটি</a></li>
+                    <li class="nav-item"><a href="#gallery" class="nav-link">গ্যালারি</a></li>
+                    <li class="nav-item"><a href="#donation" class="nav-link">ডোনেশন</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">যোগাযোগ</a></li>
+                </ul>
+                <div class="theme-switcher">
+                    <input type="checkbox" id="theme-toggle">
+                    <label for="theme-toggle" class="theme-toggle-label"></label>
+                </div>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- About Us Section -->
+        <section id="about" class="hero-section">
+            <div class="container">
+                <h1>প্রত্যয় ইসলামিক পাঠাগার</h1>
+                <p class="tagline">প্রতিষ্ঠা: ২০১৭ | সাছিয়াখালী, ফরিদগঞ্জ, চাঁদপুর</p>
+                <p class="description">
+                    'প্রত্যয় ইসলামিক পাঠাগার' একটি অরাজনৈতিক ও অলাভজনক সামাজিক সংগঠন। ২০১৭ সাল থেকে আমরা চাঁদপুর জেলার ফরিদগঞ্জ উপজেলার সাছিয়াখালী গ্রামে শিক্ষা, স্বাস্থ্য ও সামাজিক উন্নয়নে কাজ করে আসছি। আমাদের লক্ষ্য হলো একটি শিক্ষিত, সুস্থ ও মানবিক সমাজ গঠনে ভূমিকা রাখা।
+                </p>
+                <div class="hero-buttons">
+                    <a href="#gallery" class="btn btn-primary">পূর্ববর্তী কাজ (গ্যালারি)</a>
+                    <a href="#community" class="btn btn-secondary">আমাদের কমিউনিটি</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Activities Section -->
+        <section id="activities">
+            <div class="container">
+                <h2 class="section-title">আমাদের কার্যক্রম</h2>
+                <div class="activities-grid">
+                    <div class="activity-card"><h3>ফ্রী মেডিকেল ক্যাম্প</h3><p>গ্রামের সুবিধাবঞ্চিত মানুষের জন্য বিনামূল্যে চিকিৎসা সেবা প্রদান।</p></div>
+                    <div class="activity-card"><h3>ফ্রী অক্সিজেন সেবা</h3><p>মুমূর্ষু রোগীদের জন্য বিনামূল্যে অক্সিজেন সিলিন্ডার সরবরাহ।</p></div>
+                    <div class="activity-card"><h3>ত্রাণ সামগ্রী বিতরণ</h3><p>বন্যা ও অন্যান্য প্রাকৃতিক দুর্যোগে ক্ষতিগ্রস্তদের মাঝে ত্রাণ বিতরণ।</p></div>
+                    <div class="activity-card"><h3>ঈদ উপহার</h3><p>ঈদের সময় অসহায় ও দরিদ্র পরিবারের মুখে হাসি ফোটাতে উপহার সামগ্রী বিতরণ।</p></div>
+                    <div class="activity-card"><h3>কুরআন শিক্ষা</h3><p>শিশুদের জন্য বিনামূল্যে কুরআন শিক্ষার ব্যবস্থা করা।</p></div>
+                    <div class="activity-card"><h3>শিক্ষা উপকরণ বিতরণ</h3><p>দরিদ্র শিক্ষার্থীদের মাঝে বিনামূল্যে বই, খাতা, কলম ইত্যাদি বিতরণ।</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fund Section -->
+        <section id="fund">
+            <div class="container">
+                <h2 class="section-title">ফান্ডের স্বচ্ছতা</h2>
+                <div class="fund-summary">
+                    <div class="fund-card">
+                        <h3>বর্তমান ফান্ড</h3>
+                        <p>৳৫০,০০০</p>
+                    </div>
+                    <div class="fund-card">
+                        <h3>সর্বমোট খরচ</h3>
+                        <p>৳৫,৫০,০০০</p>
+                    </div>
+                </div>
+                <div class="fund-details">
+                    <h3>আয়-ব্যয়ের হিসাব</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>বছর</th>
+                                <th class="income">মোট আয়</th>
+                                <th class="expense">মোট ব্যয়</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>২০২৪</td>
+                                <td class="income">৳২,০০,০০০</td>
+                                <td class="expense">৳১,৮০,০০০</td>
+                            </tr>
+                             <tr>
+                                <td>২০২৩</td>
+                                <td class="income">৳১,৫০,০০০</td>
+                                <td class="expense">৳১,৪০,০০০</td>
+                            </tr>
+                             <tr>
+                                <td>২০২২</td>
+                                <td class="income">৳১,২০,০০০</td>
+                                <td class="expense">৳১,১০,০০০</td>
+                            </tr>
+                             <tr>
+                                <td>২০২১</td>
+                                <td class="income">৳১,০০,০০০</td>
+                                <td class="expense">৳৯০,০০০</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h4 style="margin-top: 30px;">চলতি বছরের বিস্তারিত (২০২৫)</h4>
+                    <p>চলতি বছরে বিভিন্ন খাত থেকে মোট আয় হয়েছে ৳৭০,০০০ এবং শিক্ষা ও স্বাস্থ্য খাতে মোট ব্যয় হয়েছে ৳২০,০০০। বিস্তারিত তথ্যের জন্য আমাদের সাথে যোগাযোগ করুন।</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Section -->
+        <section id="community">
+            <div class="container">
+                <h2 class="section-title">আমাদের কমিউনিটি</h2>
+                <div class="year-tabs">
+                    <button class="tab-btn active" data-year="2025">২০২৫</button>
+                    <button class="tab-btn" data-year="2024">২০২৪</button>
+                    <button class="tab-btn" data-year="2023">২০২৩</button>
+                </div>
+
+                <!-- Committee 2025 -->
+                <div id="committee-2025" class="committee-content active">
+                    <div class="community-grid">
+                        <div class="member-card"><img src="https://placehold.co/150x150/1ABC9C/FFFFFF?text=সদস্য" alt="সদস্য"><h4>সদস্যের নাম</h4><p>সভাপতি (২০২৫)</p></div>
+                        <div class="member-card"><img src="https://placehold.co/150x150/1ABC9C/FFFFFF?text=সদস্য" alt="সদস্য"><h4>সদস্যের নাম</h4><p>সাধারণ সম্পাদক</p></div>
+                        <div class="member-card"><img src="https://placehold.co/150x150/1ABC9C/FFFFFF?text=সদস্য" alt="সদস্য"><h4>সদস্যের নাম</h4><p>কোষাধ্যক্ষ</p></div>
+                        <div class="member-card"><img src="https://placehold.co/150x150/1ABC9C/FFFFFF?text=সদস্য" alt="সদস্য"><h4>সদস্যের নাম</h4><p>সদস্য</p></div>
+                    </div>
+                </div>
+
+                <!-- Committee 2024 -->
+                <div id="committee-2024" class="committee-content">
+                    <div class="community-grid">
+                        <div class="member-card"><img src="https://placehold.co/150x150/566573/FFFFFF?text=সদস্য" alt="সদস্য"><h4>পূর্ববর্তী সদস্য</h4><p>সভাপতি (২০২৪)</p></div>
+                        <div class="member-card"><img src="https://placehold.co/150x150/566573/FFFFFF?text=সদস্য" alt="সদস্য"><h4>পূর্ববর্তী সদস্য</h4><p>সাধারণ সম্পাদক</p></div>
+                    </div>
+                </div>
+                
+                <!-- Committee 2023 -->
+                <div id="committee-2023" class="committee-content">
+                    <div class="community-grid">
+                         <div class="member-card"><img src="https://placehold.co/150x150/566573/FFFFFF?text=সদস্য" alt="সদস্য"><h4>আরও পুরনো সদস্য</h4><p>সভাপতি (২০২৩)</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery">
+            <div class="container">
+                <h2 class="section-title">গ্যালারি</h2>
+                
+                <div class="gallery-event">
+                    <h3>ঈদ উপহার বিতরণ</h3>
+                    <div class="gallery-carousel">
+                        <div class="carousel-images">
+                            <img src="https://placehold.co/800x500/1ABC9C/FFFFFF?text=ঈদ+উপহার+১" alt="ঈদ উপহার ১">
+                            <img src="https://placehold.co/800x500/16A085/FFFFFF?text=ঈদ+উপহার+২" alt="ঈদ উপহার ২">
+                            <img src="https://placehold.co/800x500/1ABC9C/FFFFFF?text=ঈদ+উপহার+৩" alt="ঈদ উপহার ৩">
+                        </div>
+                        <button class="carousel-btn prev">&lt;</button>
+                        <button class="carousel-btn next">&gt;</button>
+                    </div>
+                </div>
+
+                <div class="gallery-event">
+                    <h3>ফ্রী মেডিকেল ক্যাম্প</h3>
+                    <div class="gallery-carousel">
+                        <div class="carousel-images">
+                            <img src="https://placehold.co/800x500/566573/FFFFFF?text=মেডিকেল+ক্যাম্প+১" alt="মেডিকেল ক্যাম্প ১">
+                            <img src="https://placehold.co/800x500/34495E/FFFFFF?text=মেডিকেল+ক্যাম্প+২" alt="মেডিকেল ক্যাম্প ২">
+                        </div>
+                        <button class="carousel-btn prev">&lt;</button>
+                        <button class="carousel-btn next">&gt;</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Donation Section -->
+        <section id="donation">
+            <div class="container">
+                <h2 class="section-title">ডোনেশন করুন</h2>
+                <p style="text-align:center; max-width: 600px; margin: -20px auto 40px;">আপনার সামান্য অনুদান অসহায় মানুষের মুখে হাসি ফোটাতে পারে। আমাদের কার্যক্রমে সহায়তা করতে নিচে দেওয়া নম্বরে অনুদান পাঠাতে পারেন।</p>
+                <div class="donation-methods">
+                    <div class="donation-card">
+                        <img src="https://placehold.co/150x50/E81123/FFFFFF?text=bKash" alt="বিকাশ">
+                        <h4>বিকাশ (পার্সোনাল)</h4>
+                        <p>01xxxxxxxxx</p>
+                    </div>
+                    <div class="donation-card">
+                        <img src="https://placehold.co/150x50/F6921E/FFFFFF?text=Nagad" alt="নগদ">
+                        <h4>নগদ (পার্সোনাল)</h4>
+                        <p>01xxxxxxxxx</p>
+                    </div>
+                    <div class="donation-card">
+                        <img src="https://placehold.co/150x50/8C2C90/FFFFFF?text=Rocket" alt="রকেট">
+                        <h4>রকেট (পার্সোনাল)</h4>
+                        <p>01xxxxxxxxx</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="container">
+                <h2 class="section-title">যোগাযোগ</h2>
+                <div class="contact-info">
+                    <p><strong>ঠিকানা:</strong> প্রত্যয় ইসলামিক পাঠাগার, সাছিয়াখালী, ফরিদগঞ্জ, চাঁদপুর।</p>
+                    <p><strong>ইমেইল:</strong> contact@prottay.org</p>
+                    <p><strong>ফোন:</strong> +880 123 456 7890</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; ২০২৫ | প্রত্যয় ইসলামিক পাঠাগার। সর্বসত্ত্ব সংরক্ষিত।</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // Mobile Menu Toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+            document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }));
+
+            // Theme Switcher
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+            if (localStorage.getItem('theme') === 'dark') {
+                body.classList.add('dark-mode');
+                themeToggle.checked = true;
+            }
+            themeToggle.addEventListener('change', () => {
+                if (themeToggle.checked) {
+                    body.classList.add('dark-mode');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    body.classList.remove('dark-mode');
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+
+            // Active link highlighting on scroll
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, { rootMargin: '-40% 0px -60% 0px' });
+            sections.forEach(section => observer.observe(section));
+
+            // Community Section Tabs
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const committeeContents = document.querySelectorAll('.committee-content');
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    const year = button.getAttribute('data-year');
+                    committeeContents.forEach(content => {
+                        content.classList.remove('active');
+                        if (content.id === `committee-${year}`) {
+                            content.classList.add('active');
+                        }
+                    });
+                });
+            });
+
+            // Gallery Carousel
+            const carousels = document.querySelectorAll('.gallery-carousel');
+            carousels.forEach(carousel => {
+                const imagesContainer = carousel.querySelector('.carousel-images');
+                const prevBtn = carousel.querySelector('.prev');
+                const nextBtn = carousel.querySelector('.next');
+                const images = imagesContainer.querySelectorAll('img');
+                
+                let currentIndex = 0;
+                const totalImages = images.length;
+
+                if (totalImages <= 1) {
+                    prevBtn.style.display = 'none';
+                    nextBtn.style.display = 'none';
+                    return;
+                }
+
+                function updateCarousel() {
+                    imagesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+                }
+
+                prevBtn.addEventListener('click', () => {
+                    currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+                    updateCarousel();
+                });
+
+                nextBtn.addEventListener('click', () => {
+                    currentIndex = (currentIndex + 1) % totalImages;
+                    updateCarousel();
+                });
+            });
+
+        });
+    </script>
+</body>
+</html>
