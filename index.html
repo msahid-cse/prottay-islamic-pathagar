@@ -6,6 +6,60 @@
     <title>প্রত্যয় ইসলামিক পাঠাগার</title>
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Event Section */
+        .events-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: space-between;
+        }
+        .upcoming-events, .previous-events {
+            flex: 1 1 320px;
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 25px 20px 20px 20px;
+            min-width: 300px;
+        }
+        .upcoming-events {
+            border: 2px solid var(--primary-color);
+        }
+        .previous-events {
+            border: 1px solid var(--border-color);
+        }
+        .event-card {
+            background: var(--background-color);
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            padding: 18px 15px 12px 15px;
+            margin-bottom: 18px;
+            position: relative;
+        }
+        .event-card.upcoming {
+            border-left: 5px solid var(--primary-color);
+        }
+        .event-card h4 {
+            margin: 0 0 8px 0;
+            color: var(--primary-color);
+        }
+        .event-card p {
+            margin: 0 0 5px 0;
+        }
+        .event-label {
+            display: inline-block;
+            background: var(--primary-color);
+            color: #fff;
+            font-size: 0.95rem;
+            padding: 2px 10px;
+            border-radius: 12px;
+            margin-top: 8px;
+        }
+        @media (max-width: 900px) {
+            .events-wrapper {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
         /* Google Font & Basic Styles */
         body {
             font-family: 'Hind Siliguri', sans-serif;
@@ -156,12 +210,12 @@
         .hero-section { display: flex; align-items: center; justify-content: center; text-align: center; min-height: 70vh; overflow: hidden; }
         .hero-bg-slider { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
         .hero-bg-slider img { position: absolute; top:0; left:0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1s ease-in-out; }
-        .hero-bg-slider img.active { opacity: 1; }
+        .hero-bg-slider img.active { opacity: 0.8; }
         .hero-section::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1; }
         .hero-section .container { position: relative; z-index: 2; color: white; }
-        .hero-section h1 { color: white; font-size: 3.5rem; }
+        .hero-section h1 { color: rgb(255, 255, 255); font-size: 3.5rem; }
         .hero-section .tagline { font-size: 1.2rem; margin-bottom: 20px; }
-        .hero-section .description { max-width: 700px; margin: 0 auto 30px; line-height: 1.7; }
+        .hero-section .description { max-width: 700px; margin: 0 auto 30px; line-height: 1.7; color: white;  }
         .btn { padding: 12px 30px; text-decoration: none; border-radius: 50px; font-weight: 600; transition: all 0.3s; margin: 5px; display: inline-block; border: 2px solid var(--primary-color); }
         .btn-primary { background-color: var(--primary-color); color: white; }
         .btn-primary:hover { background-color: var(--primary-hover); border-color: var(--primary-hover); }
@@ -392,7 +446,7 @@
                     <li class="nav-item"><a href="#activities" class="nav-link">কার্যক্রম</a></li>
                     <li class="nav-item"><a href="#fund" class="nav-link">ফান্ড</a></li>
                     <li class="nav-item dropdown">
-                        <a href="#gallery" class="nav-link">ইভেন্ট</a>
+                        <a href="#events" class="nav-link">ইভেন্ট</a>
                         <div class="dropdown-content">
                             <h4>আপকামিং ইভেন্ট</h4>
                             <p>ফ্রী মেডিকেল ক্যাম্প ২০২৫</p>
@@ -441,9 +495,13 @@
             </div>
             <div class="container">
                 <h1>প্রত্যয় ইসলামিক পাঠাগার</h1>
-                <p class="tagline">প্রতিষ্ঠা: ২০১৭ | সাছিয়াখালী, ফরিদগঞ্জ, চাঁদপুর</p>
+                <p class="tagline">প্রতিষ্ঠা: ২০১৮ | সাছিয়াখালী, ফরিদগঞ্জ, চাঁদপুর</p>
                 <p class="description">
-                    'প্রত্যয় ইসলামিক পাঠাগার' একটি অরাজনৈতিক ও অলাভজনক সামাজিক সংগঠন। ২০১৭ সাল থেকে আমরা চাঁদপুর জেলার ফরিদগঞ্জ উপজেলার সাছিয়াখালী গ্রামে শিক্ষা, স্বাস্থ্য ও সামাজিক উন্নয়নে কাজ করে আসছি। আমাদের লক্ষ্য হলো একটি শিক্ষিত, সুস্থ ও মানবিক সমাজ গঠনে ভূমিকা রাখা।
+                    'প্রত্যয় ইসলামিক পাঠাগার' একটি অরাজনৈতিক ও অলাভজনক সামাজিক সংগঠন। ২০১৮ সাল থেকে আমরা চাঁদপুর জেলার ফরিদগঞ্জ উপজেলার সাছিয়াখালী গ্রামে শিক্ষা, স্বাস্থ্য ও সামাজিক উন্নয়নে কাজ করে আসছি। আমাদের লক্ষ্য হলো একটি শিক্ষিত, সুস্থ ও মানবিক সমাজ গঠনে ভূমিকা রাখা। <br>
+
+                    আমরা বিনামূল্যে চিকিৎসা সেবা, অক্সিজেন সরবরাহ, ত্রাণ বিতরণ, কুরআন শিক্ষা, রক্তদান কর্মসূচি, পরিচ্ছন্নতা অভিযান ইত্যাদি কার্যক্রম পরিচালনা করে আসছি।<br>
+
+                    "সমাজে জ্ঞানমূলক সংস্কারমূলক ও সামাজিক কার্যক্রমের প্রচার ও প্রসার ঘটিয়ে উন্নত নৈতিক মূল্যবোধ সৃষ্টির মাধ্যমে আদর্শ সমাজ বিনির্মাণ এই পাঠাগার এর লক্ষ্য ও উদ্দেশ্য"
                 </p>
                 <div class="hero-buttons">
                     <a href="#gallery" class="btn btn-primary">পূর্ববর্তী কাজ (গ্যালারি)</a>
@@ -472,7 +530,7 @@
         <!-- Fund Section -->
         <section id="fund">
             <div class="container fund-container">
-                <h2 class="section-title">ফান্ডের স্বচ্ছতা (শিঘ্রই আপডেট করা হবে)</h2>
+                <h2 class="section-title">ফান্ড (শিঘ্রই আপডেট করা হবে)</h2>
                 <div class="fund-summary-grid">
                     <div class="fund-card">
                         <div class="icon">💰</div>
@@ -511,57 +569,145 @@
                     <button class="tab-btn" data-year="2024">২০২৪</button>
                     <button class="tab-btn" data-year="2023">২০২৩</button>
                     <button class="tab-btn" data-year="2022">২০২২</button>
-                    <button class="tab-btn" data-year="2021">২০২১</button>
-                    <button class="tab-btn" data-year="2020">২০২০</button>
-                    <button class="tab-btn" data-year="2019">২০১৯</button>
-                    <button class="tab-btn" data-year="2018">২০১৮</button>
-                    <button class="tab-btn" data-year="2017">২০১৭</button>
                 </div>
                 <!-- Committee 2025 -->
                 <div id="committee-2025" class="committee-content active">
                     <div class="community-grid">
-                        <div class="member-card"><img src="figures/mahmudul.jpg" alt="সদস্য"><h4>মাহমুদুল হাসান</h4><p>আহবায়ক</p></div>
-                        <div class="member-card"><img src="figures/sahid-png.png" alt="সদস্য"><h4>সাহিদুল ইসলাম</h4><p>যুগ্ম আহবায়ক</p></div>
-                        <div class="member-card"><img src="figures/mostofa.jpg" alt="সদস্য"><h4>মোস্তফা কামাল</h4><p>সদস্য সচিব</p></div>
-                        <div class="member-card"><img src="figures/mujahid.jpg" alt="সদস্য"><h4>মুজাহিদুল ইসলাম</h4><p>কোষাধ্যক্ষ</p></div>
+                        <div class="member-card">
+                            <img src="figures/mahmudul.jpg" alt="মাহমুদুল হাসান">
+                            <h3>মাহমুদুল হাসান</h3>
+                            <p>আহবায়ক</p>
+                        </div>
+                        <div class="member-card">
+                            <img src="figures/sahid-png.png" alt="মোঃ সাহিদ">
+                            <h3>মোঃ সাহিদ</h3>
+                            <p>যুগ্ম আহবায়ক</p>
+                        </div>
+                        <div class="member-card">
+                            <img src="figures/mostofa.jpg" alt="মোস্তফা কামাল">
+                            <h3>মোস্তফা কামাল</h3>
+                            <p>সদস্য সচিব</p>
+                        </div>
+                        <div class="member-card">
+                            <img src="figures/mujahid.jpg" alt="মুজাহিদ ইসলাম">
+                            <h3>মুজাহিদ ইসলাম</h3>
+                            <p>কোষাধ্যক্ষ</p>
+                        </div>
                     </div>
                 </div>
                 <!-- Other Committees -->
                 <div id="committee-2024" class="committee-content">
                     <div class="community-grid">
-                        <div class="member-card"><img src="figures/image.png" alt="সদস্য"><h4>নাজির হোসেন</h4><p>সভাপতি</p></div>
-                        <div class="member-card"><img src="figures/image.png" alt="সদস্য"><h4>জয়নাল আবেদীন</h4><p>সাধারণ সম্পাদক</p></div>
-                        <div class="member-card"><img src="figures/image.png" alt="সদস্য"><h4>মুজাহিদুল ইসলাম</h4><p>কোষাধ্যক্ষ</p></div>
+                        <div class="member-card">
+                            <img src="figures/mahmudul.jpg" alt="মাহমুদুল হাসান">
+                            <h3>মাহমুদুল হাসান</h3>
+                            <p>আহবায়ক</p>
+                        </div>
+                        <div class="member-card">
+                            <img src="figures/sahid-png.png" alt="মোঃ সাহিদ">
+                            <h3>মোঃ সাহিদ</h3>
+                            <p>যুগ্ম আহবায়ক</p>
+                        </div>
+                        <div class="member-card">
+                            <img src="figures/mostofa.jpg" alt="মোস্তফা কামাল">
+                            <h3>মোস্তফা কামাল</h3>
+                            <p>সদস্য সচিব</p>
+                        </div>
+                        <div class="member-card">
+                            <img src="figures/mujahid.jpg" alt="মুজাহিদ ইসলাম">
+                            <h3>মুজাহিদ ইসলাম</h3>
+                            <p>কোষাধ্যক্ষ</p>
+                        </div>
                     </div>
                 </div>
                 <div id="committee-2023" class="committee-content">
                     <div class="community-grid">
-                        <div class="member-card"><img src="figures/image.png" alt="সদস্য"><h4>নাজির হোসেন</h4><p>সভাপতি</p></div>
-                        <div class="member-card"><img src="figures/image.png" alt="সদস্য"><h4>মাসুম পারভেজ</h4><p>সাধারণ সম্পাদক</p></div>
-                        <div class="member-card"><img src="figures/image.png" alt="সদস্য"><h4>জয়নাল আবেদীন</h4><p>কোষাধ্যক্ষ</p></div>
+                        <div class="member-card">
+                            <img src="figures/mahmudul.jpg" alt="মাহমুদুল হাসান">
+                            <h3>মাহমুদুল হাসান</h3>
+                            <p>আহবায়ক</p>
+                        </div>
+                        <div class="member-card">
+                            <img src="figures/sahid-png.png" alt="মোঃ সাহিদ">
+                            <h3>মোঃ সাহিদ</h3>
+                            <p>যুগ্ম আহবায়ক</p>
+                        </div>
+                        <div class="member-card">
+                            <img src="figures/mostofa.jpg" alt="মোস্তফা কামাল">
+                            <h3>মোস্তফা কামাল</h3>
+                            <p>সদস্য সচিব</p>
+                        </div>
+                        <div class="member-card">
+                            <img src="figures/mujahid.jpg" alt="মুজাহিদ ইসলাম">
+                            <h3>মুজাহিদ ইসলাম</h3>
+                            <p>কোষাধ্যক্ষ</p>
+                        </div>
                     </div>
                 </div>
                 <div id="committee-2022" class="committee-content">
                     <div class="community-grid">
-                        <div class="member-card"><img src="figures/image.png" alt="সদস্য"><h4>মোস্তফিজুর রহমান</h4><p>সভাপতি</p></div>
-                        <div class="member-card"><img src="figures/image.png" alt="সদস্য"><h4>জয়নাল আবেদীন</h4><p>সাধারণ সম্পাদক</p></div>
-                        <div class="member-card"><img src="figures/image.png" alt="সদস্য"><h4>নাজির হোসেন</h4><p>কোষাধ্যক্ষ</p></div>
+                        <div class="member-card">
+                            <img src="figures/mahmudul.jpg" alt="মাহমুদুল হাসান">
+                            <h3>মাহমুদুল হাসান</h3>
+                            <p>আহবায়ক</p>
+                        </div>
+                        <div class="member-card">
+                            <img src="figures/sahid-png.png" alt="মোঃ সাহিদ">
+                            <h3>মোঃ সাহিদ</h3>
+                            <p>যুগ্ম আহবায়ক</p>
+                        </div>
+                        <div class="member-card">
+                            <img src="figures/mostofa.jpg" alt="মোস্তফা কামাল">
+                            <h3>মোস্তফা কামাল</h3>
+                            <p>সদস্য সচিব</p>
+                        </div>
+                        <div class="member-card">
+                            <img src="figures/mujahid.jpg" alt="মুজাহিদ ইসলাম">
+                            <h3>মুজাহিদ ইসলাম</h3>
+                            <p>কোষাধ্যক্ষ</p>
+                        </div>
                     </div>
                 </div>
-                <div id="committee-2021" class="committee-content">
-                    <div class="community-grid">
-                        <div class="member-card"><img src="figures/image.png" alt="সদস্য"><h4>রাকিবুল হাসান রাসেল</h4><p>সভাপতি</p></div>
-                        <div class="member-card"><img src="figures/image.png" alt="সদস্য"><h4>রাতিন পাটোয়ারী</h4><p>সাধারণ সম্পাদক</p></div>
-                        <div class="member-card"><img src="figures/image.png" alt="সদস্য"><h4>নাজির হোসেন</h4><p>কোষাধ্যক্ষ</p></div>
-                    </div>
-                </div>
-                <div id="committee-2020" class="committee-content"></div>
-                <div id="committee-2019" class="committee-content"></div>
-                <div id="committee-2018" class="committee-content"></div>
-                <div id="committee-2017" class="committee-content"></div>
             </div>
         </section>
-
+        <!-- Event Section (moved below Community) -->
+        <section id="events">
+            <div class="container">
+                <h2 class="section-title">ইভেন্টসমূহ</h2>
+                <div class="events-wrapper">
+                    <div class="upcoming-events">
+                        <h3>আপকামিং ইভেন্ট</h3>
+                        <div class="event-card upcoming">
+                            <h4>ফ্রী মেডিকেল ক্যাম্প ২০২৫</h4>
+                            <p>তারিখ: ৩০ আগস্ট, ২০২৫</p>
+                            <p>স্থান: সাছিয়াখালী, ফরিদগঞ্জ, চাঁদপুর</p>
+                            <span class="event-label">শীঘ্রই</span>
+                        </div>
+                        <div class="event-card upcoming">
+                            <h4>ফ্রী মেডিকেল ক্যাম্প ২০২৫</h4>
+                            <p>তারিখ: ৩০ আগস্ট, ২০২৫</p>
+                            <p>স্থান: সাছিয়াখালী, ফরিদগঞ্জ, চাঁদপুর</p>
+                            <span class="event-label">শীঘ্রই</span>
+                        </div>
+                    </div>
+                    <div class="previous-events">
+                        <h3>পূর্ববর্তী ইভেন্ট</h3>
+                        <div class="event-card">
+                            <h4>ফ্রী মেডিকেল ক্যাম্প ২০২৪</h4>
+                            <p>তারিখ: ২৫ আগস্ট, ২০২৪</p>
+                        </div>
+                        <div class="event-card">
+                            <h4>ঈদ উপহার বিতরণ ২০২৪</h4>
+                            <p>তারিখ: ১০ এপ্রিল, ২০২৪</p>
+                        </div>
+                        <div class="event-card">
+                            <h4>ত্রাণ বিতরণ ২০২৩</h4>
+                            <p>তারিখ: ১৫ জুলাই, ২০২৩</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <!-- Gallery Section -->
         <section id="gallery">
             <div class="container">
@@ -569,34 +715,123 @@
                 <div class="gallery-grid">
                     <!-- Row 1 -->
                     <div class="gallery-carousel-wrapper">
-                        <div class="gallery-carousel"><div class="carousel-images"><img src="https://placehold.co/400x300/1ABC9C/FFFFFF?text=ঈদ+১" alt="ঈদ উপহার ১"><img src="https://placehold.co/400x300/16A085/FFFFFF?text=ঈদ+২" alt="ঈদ উপহার ২"></div><button class="carousel-btn prev">&lt;</button><button class="carousel-btn next">&gt;</button></div><h4>ঈদ উপহার বিতরণ</h4>
+                        <div class="gallery-carousel">
+                            <div class="carousel-images">
+                                <img src="figures/p-16-9-6.png" alt="ফ্রী মেডিকেল ক্যাম্প - ২০২৪">
+                                <img src="figures/medical-camp-24/received_1118837162554665.jpeg" alt="ফ্রী মেডিকেল ক্যাম্প - ২০২৪ ২">
+                                <img src="figures/medical-camp-24/received_1148614576285412.jpeg" alt="ফ্রী মেডিকেল ক্যাম্প - ২০২৪ ৩">  
+
+                                <img src="figures/medical-camp-24/received_1193000838545138.jpeg" alt="ফ্রী মেডিকেল ক্যাম্প - ২০২৪ ৪">
+                                <img src="figures/medical-camp-24/received_1220073025646483.jpeg" alt="ফ্রী মেডিকেল ক্যাম্প - ২০২৪ ৫">
+                                <img src="figures/medical-camp-24/received_384721424057997.jpeg" alt="ফ্রী মেডিকেল ক্যাম্প - ২০২৪ ৬">
+                                <img src="figures/medical-camp-24/received_448740944540199.jpeg" alt="ফ্রী মেডিকেল ক্যাম্প - ২০২৪ ৭">
+                                <img src="figures/medical-camp-24/received_995587275287288.jpeg" alt="ফ্রী মেডিকেল ক্যাম্প - ২০২৪ ৮">
+
+                            </div>
+                            <button class="carousel-btn prev">&lt;</button>
+                            <button class="carousel-btn next">&gt;</button>
+                        </div>
+                        <h4>ফ্রী মেডিকেল ক্যাম্প - ২০২৪</h4>
                     </div>
                     <div class="gallery-carousel-wrapper">
-                        <div class="gallery-carousel"><div class="carousel-images"><img src="https://placehold.co/400x300/566573/FFFFFF?text=ক্যাম্প+১" alt="মেডিকেল ক্যাম্প ১"><img src="https://placehold.co/400x300/34495E/FFFFFF?text=ক্যাম্প+২" alt="মেডিকেল ক্যাম্প ২"><img src="https://placehold.co/400x300/2C3E50/FFFFFF?text=ক্যাম্প+৩" alt="মেডিকেল ক্যাম্প ৩"></div><button class="carousel-btn prev">&lt;</button><button class="carousel-btn next">&gt;</button></div><h4>ফ্রী মেডিকেল ক্যাম্প</h4>
+                        <div class="gallery-carousel">
+                            <div class="carousel-images">
+                                <img src="figures/tran-24/tran-24-1.jpeg" alt="বন্যা ত্রাণ ও পূনর্বাসন কার্যক্রম -২০২৪">
+                                <img src="figures/tran-24/tran-24-2.jpeg" alt="বন্যা ত্রাণ ও পূনর্বাসন কার্যক্রম -২০২৪">
+                                <img src="figures/tran-24/tran-24-3.jpeg" alt="বন্যা ত্রাণ ও পূনর্বাসন কার্যক্রম -২০২৪">
+                                <img src="figures/tran-24/tran-24-4.jpeg" alt="বন্যা ত্রাণ ও পূনর্বাসন কার্যক্রম -২০২৪">
+                                <img src="figures/tran-24/tran-24-5.jpeg" alt="বন্যা ত্রাণ ও পূনর্বাসন কার্যক্রম -২০২৪">
+                                <img src="figures/tran-24/tran-24-6.jpeg" alt="বন্যা ত্রাণ ও পূনর্বাসন কার্যক্রম -২০২৪">
+                                <img src="figures/tran-24/tran-24-7.jpeg" alt="বন্যা ত্রাণ ও পূনর্বাসন কার্যক্রম -২০২৪">
+                                <img src="figures/tran-24/tran-24-8.jpeg" alt="বন্যা ত্রাণ ও পূনর্বাসন কার্যক্রম -২০২৪">
+                                <img src="figures/tran-24/tran-24-9.jpeg" alt="বন্যা ত্রাণ ও পূনর্বাসন কার্যক্রম -২০২৪">
+                                <img src="figures/tran-24/tran-24-10.jpeg"alt="বন্যা ত্রাণ ও পূনর্বাসন কার্যক্রম -২০২৪">
+                            </div>
+                            <button class="carousel-btn prev">&lt;</button>
+                            <button class="carousel-btn next">&gt;</button>
+                        </div>
+                        <h4>বন্যা ত্রাণ ও পূনর্বাসন কার্যক্রম -২০২৪</h4>
                     </div>
                     <div class="gallery-carousel-wrapper">
-                        <div class="gallery-carousel"><div class="carousel-images"><img src="https://placehold.co/400x300/1ABC9C/FFFFFF?text=গাছ+১" alt="বৃক্ষরোপণ ১"></div><button class="carousel-btn prev">&lt;</button><button class="carousel-btn next">&gt;</button></div><h4>বৃক্ষরোপণ</h4>
+                        <div class="gallery-carousel">
+                            <div class="carousel-images">
+                                <img src="figures/bonna-24/bonna-24-1.jpeg" alt="বন্যা পরিস্থিতি পর্যবেক্ষণ - ২০২৪">
+                                <img src="figures/bonna-24/bonna-24-2.jpeg" alt="বন্যা পরিস্থিতি পর্যবেক্ষণ - ২০২৪ ২">
+                                <img src="figures/bonna-24/bonna-24-3.jpeg" alt="বন্যা পরিস্থিতি পর্যবেক্ষণ - ২০২৪ ৩">
+                                <img src="figures/bonna-24/bonna-24-4.jpeg" alt="বন্যা পরিস্থিতি পর্যবেক্ষণ - ২০২৪ ৪">
+                                <img src="figures/bonna-24/bonna-24-5.jpeg" alt="বন্যা পরিস্থিতি পর্যবেক্ষণ - ২০২৪ ৫">
+                                <img src="figures/bonna-24/bonna-24-6.jpeg" alt="বন্যা পরিস্থিতি পর্যবেক্ষণ - ২০২৪ ৬">
+                                <img src="figures/bonna-24/bonna-24-7.jpeg" alt="বন্যা পরিস্থিতি পর্যবেক্ষণ - ২০২৪ ৭">
+                                <img src="figures/bonna-24/bonna-24-8.jpeg" alt="বন্যা পরিস্থিতি পর্যবেক্ষণ - ২০২৪ ৮">
+                                <img src="figures/bonna-24/bonna-24-9.jpeg" alt="বন্যা পরিস্থিতি পর্যবেক্ষণ - ২০২৪ ৯">
+                            </div>
+                            <button class="carousel-btn prev">&lt;</button>
+                            <button class="carousel-btn next">&gt;</button>
+                        </div>
+                        <h4>বন্যা পরিস্থিতি পর্যবেক্ষণ - ২০২৪</h4>
                     </div>
                     <div class="gallery-carousel-wrapper">
-                        <div class="gallery-carousel"><div class="carousel-images"><img src="https://placehold.co/400x300/16A085/FFFFFF?text=রক্তদান" alt="রক্তদান"></div><button class="carousel-btn prev">&lt;</button><button class="carousel-btn next">&gt;</button></div><h4>রক্তদান কর্মসূচি</h4>
+                        <div class="gallery-carousel">
+                            <div class="carousel-images">
+                                <img src="https://placehold.co/400x300/16A085/FFFFFF?text=রক্তদান" alt="রক্তদান">
+                            </div>
+                            <button class="carousel-btn prev">&lt;</button>
+                            <button class="carousel-btn next">&gt;</button>
+                        </div>
+                        <h4>রক্তদান কর্মসূচি</h4>
                     </div>
                     <!-- Row 2 -->
                     <div class="gallery-carousel-wrapper">
-                        <div class="gallery-carousel"><div class="carousel-images"><img src="https://placehold.co/400x300/566573/FFFFFF?text=ত্রাণ+১" alt="ত্রাণ বিতরণ"></div><button class="carousel-btn prev">&lt;</button><button class="carousel-btn next">&gt;</button></div><h4>ত্রাণ বিতরণ</h4>
+                        <div class="gallery-carousel">
+                            <div class="carousel-images">
+                                <img src="https://placehold.co/400x300/566573/FFFFFF?text=ত্রাণ+১" alt="ত্রাণ বিতরণ">
+                            </div>
+                            <button class="carousel-btn prev">&lt;</button>
+                            <button class="carousel-btn next">&gt;</button>
+                        </div>
+                        <h4>ত্রাণ বিতরণ</h4>
                     </div>
                     <div class="gallery-carousel-wrapper">
-                        <div class="gallery-carousel"><div class="carousel-images"><img src="https://placehold.co/400x300/34495E/FFFFFF?text=শিক্ষা+১" alt="শিক্ষা উপকরণ"></div><button class="carousel-btn prev">&lt;</button><button class="carousel-btn next">&gt;</button></div><h4>শিক্ষা উপকরণ</h4>
+                        <div class="gallery-carousel">
+                            <div class="carousel-images">
+                                <img src="https://placehold.co/400x300/34495E/FFFFFF?text=শিক্ষা+১" alt="শিক্ষা উপকরণ">
+                            </div>
+                            <button class="carousel-btn prev">&lt;</button>
+                            <button class="carousel-btn next">&gt;</button>
+                        </div>
+                        <h4>শিক্ষা উপকরণ</h4>
                     </div>
                     <div class="gallery-carousel-wrapper">
-                        <div class="gallery-carousel"><div class="carousel-images"><img src="https://placehold.co/400x300/566573/FFFFFF?text=পরিচ্ছন্নতা+১" alt="পরিচ্ছন্নতা অভিযান"></div><button class="carousel-btn prev">&lt;</button><button class="carousel-btn next">&gt;</button></div><h4>পরিচ্ছন্নতা অভিযান</h4>
+                        <div class="gallery-carousel">
+                            <div class="carousel-images">
+                                <img src="https://placehold.co/400x300/566573/FFFFFF?text=পরিচ্ছন্নতা+১" alt="পরিচ্ছন্নতা অভিযান">
+                            </div>
+                            <button class="carousel-btn prev">&lt;</button>
+                            <button class="carousel-btn next">&gt;</button>
+                        </div>
+                        <h4>পরিচ্ছন্নতা অভিযান</h4>
                     </div>
                     <div class="gallery-carousel-wrapper view-more-card"><h3>আরো দেখুন...</h3></div>
                     <!-- Hidden Cards -->
                     <div class="gallery-carousel-wrapper hidden">
-                        <div class="gallery-carousel"><div class="carousel-images"><img src="https://placehold.co/400x300/1ABC9C/FFFFFF?text=শীতবস্ত্র+১" alt="শীতবস্ত্র বিতরণ"></div><button class="carousel-btn prev">&lt;</button><button class="carousel-btn next">&gt;</button></div><h4>শীতবস্ত্র বিতরণ</h4>
+                        <div class="gallery-carousel">
+                            <div class="carousel-images">
+                                <img src="https://placehold.co/400x300/1ABC9C/FFFFFF?text=শীতবস্ত্র+১" alt="শীতবস্ত্র বিতরণ">
+                            </div>
+                            <button class="carousel-btn prev">&lt;</button>
+                            <button class="carousel-btn next">&gt;</button>
+                        </div>
+                        <h4>শীতবস্ত্র বিতরণ</h4>
                     </div>
                     <div class="gallery-carousel-wrapper hidden">
-                        <div class="gallery-carousel"><div class="carousel-images"><img src="https://placehold.co/400x300/16A085/FFFFFF?text=ইফতার+১" alt="ইফতার মাহফিল"></div><button class="carousel-btn prev">&lt;</button><button class="carousel-btn next">&gt;</button></div><h4>ইফতার মাহফিল</h4>
+                        <div class="gallery-carousel">
+                            <div class="carousel-images">
+                                <img src="https://placehold.co/400x300/16A085/FFFFFF?text=ইফতার+১" alt="ইফতার মাহফিল">
+                            </div>
+                            <button class="carousel-btn prev">&lt;</button>
+                            <button class="carousel-btn next">&gt;</button>
+                        </div>
+                        <h4>ইফতার মাহফিল</h4>
                     </div>
                 </div>
             </div>
