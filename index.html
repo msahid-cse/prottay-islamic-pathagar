@@ -12,11 +12,11 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            transition: background-color 0.3s, color 0.3s;
+            transition: background-color 0.4s, color 0.4s;
             scroll-behavior: smooth;
         }
 
-        /* New Color Palette & Variables */
+        /* Light Mode Color Palette */
         :root {
             --primary-color: #1ABC9C; /* Teal Green */
             --secondary-color: #566573;
@@ -28,14 +28,15 @@
             --primary-hover: #16A085;
         }
 
+        /* Dark Mode Color Palette - Corrected & Improved */
         body.dark-mode {
             --primary-color: #48C9B0;
-            --secondary-color: #99A3A4;
-            --background-color: #17202A;
-            --text-color: #EAECEE;
-            --card-bg: #212F3D;
-            --border-color: #444;
-            --shadow: 0 4px 12px rgba(0,0,0,0.3);
+            --secondary-color: #AAB7B8;
+            --background-color: #121212; /* Standard dark background */
+            --text-color: #EAECEE; /* Off-white text for better readability */
+            --card-bg: #1E1E1E; /* Standard elevated surface color */
+            --border-color: #333333; /* Subtle borders */
+            --shadow: 0 4px 15px rgba(0,0,0,0.3);
             --primary-hover: #1ABC9C;
         }
 
@@ -44,7 +45,6 @@
             background-color: var(--background-color);
             color: var(--text-color);
         }
-
         .container {
             max-width: 1100px;
             margin: 0 auto;
@@ -53,6 +53,7 @@
 
         section {
             padding: 60px 0;
+            position: relative;
         }
 
         .section-title {
@@ -63,88 +64,109 @@
             font-weight: 700;
         }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-weight: 600;
-        }
-
         /* Navbar */
         .navbar {
             background-color: var(--card-bg);
             box-shadow: var(--shadow);
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 1001;
             width: 100%;
         }
+        .navbar .container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+        .nav-logo { display: flex; align-items: center; text-decoration: none; }
+        .nav-logo img { height: 40px; margin-right: 10px; }
+        .nav-logo span { font-size: 1.4rem; font-weight: 700; color: var(--primary-color); }
+        .nav-menu { display: flex; list-style: none; margin: 0; padding: 0; }
+        .nav-item { margin-left: 25px; }
+        .nav-link { text-decoration: none; color: var(--text-color); font-weight: 500; transition: color 0.3s; padding-bottom: 5px; border-bottom: 2px solid transparent; }
+        .nav-link:hover, .nav-link.active { color: var(--primary-color); border-bottom-color: var(--primary-color); }
 
-        .navbar .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 70px;
-        }
-
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-        }
-        .nav-logo img {
-            height: 40px;
-            margin-right: 10px;
-        }
-        .nav-logo span {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--primary-color);
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav-item {
-            margin-left: 25px;
-        }
-
-        .nav-link {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 500;
-            transition: color 0.3s;
-            padding-bottom: 5px;
-            border-bottom: 2px solid transparent;
-        }
-
-        .nav-link:hover, .nav-link.active {
-            color: var(--primary-color);
-            border-bottom-color: var(--primary-color);
-        }
-
+        /* Header Event Dropdown */
+        .nav-item.dropdown { position: relative; }
+        .dropdown-content { display: none; position: absolute; top: 110%; left: 50%; transform: translateX(-50%); background-color: var(--card-bg); box-shadow: var(--shadow); padding: 15px; border-radius: 8px; width: 280px; z-index: 1002; border-top: 3px solid var(--primary-color); }
+        .dropdown-content h4 { margin: 0 0 10px 0; color: var(--primary-color); }
+        .dropdown-content p { margin: 0 0 5px 0; font-size: 0.9rem; }
+        .dropdown-content small { color: var(--secondary-color); }
+        .nav-item.dropdown:hover .dropdown-content { display: block; }
+        
         .hamburger { display: none; cursor: pointer; }
         .bar { display: block; width: 25px; height: 3px; margin: 5px auto; background-color: var(--text-color); transition: all 0.3s ease-in-out; }
 
-        /* Theme Switcher */
+        /* Theme Switcher with Icons - Updated */
         .theme-switcher { display: flex; align-items: center; margin-left: 20px; }
         #theme-toggle { display: none; }
-        .theme-toggle-label { cursor: pointer; width: 50px; height: 25px; background: #ccc; display: block; border-radius: 100px; position: relative; }
-        .theme-toggle-label::after { content: ''; position: absolute; top: 2.5px; left: 2.5px; width: 20px; height: 20px; background: #fff; border-radius: 50%; transition: 0.3s; }
-        #theme-toggle:checked + .theme-toggle-label { background: var(--primary-color); }
-        #theme-toggle:checked + .theme-toggle-label::after { left: calc(100% - 2.5px); transform: translateX(-100%); }
+        .theme-toggle-label {
+            cursor: pointer;
+            width: 50px;
+            height: 25px;
+            background: #767577;
+            display: flex;
+            align-items: center;
+            border-radius: 100px;
+            position: relative;
+            transition: background-color 0.3s;
+        }
+        .theme-toggle-label .ball {
+            width: 22px;
+            height: 22px;
+            background: #fff;
+            border-radius: 50%;
+            position: absolute;
+            top: 1.5px;
+            left: 1.5px;
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        #theme-toggle:checked + .theme-toggle-label {
+            background: #3c3b3d;
+        }
+        #theme-toggle:checked + .theme-toggle-label .ball {
+            transform: translateX(25px);
+        }
+        .ball svg {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .ball .sun-icon {
+            color: #f39c12;
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
+        .ball .moon-icon {
+            color: #48C9B0;
+            opacity: 0;
+            transform: scale(0) rotate(-90deg);
+        }
+        #theme-toggle:checked + .theme-toggle-label .ball .sun-icon {
+            opacity: 0;
+            transform: scale(0) rotate(90deg);
+        }
+        #theme-toggle:checked + .theme-toggle-label .ball .moon-icon {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
 
-        /* Hero Section */
-        .hero-section { text-align: center; padding: 80px 0; background-color: var(--card-bg); }
-        .hero-section h1 { font-size: 3rem; margin-bottom: 10px; color: var(--primary-color); }
+        /* Hero Section with BG Slider */
+        .hero-section { display: flex; align-items: center; justify-content: center; text-align: center; min-height: 70vh; overflow: hidden; }
+        .hero-bg-slider { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
+        .hero-bg-slider img { position: absolute; top:0; left:0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1s ease-in-out; }
+        .hero-bg-slider img.active { opacity: 1; }
+        .hero-section::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1; }
+        .hero-section .container { position: relative; z-index: 2; color: white; }
+        .hero-section h1 { color: white; font-size: 3.5rem; }
         .hero-section .tagline { font-size: 1.2rem; margin-bottom: 20px; }
         .hero-section .description { max-width: 700px; margin: 0 auto 30px; line-height: 1.7; }
-        .btn { padding: 12px 25px; text-decoration: none; border-radius: 50px; font-weight: 600; transition: all 0.3s; margin: 5px; display: inline-block; border: 2px solid var(--primary-color); }
+        .btn { padding: 12px 30px; text-decoration: none; border-radius: 50px; font-weight: 600; transition: all 0.3s; margin: 5px; display: inline-block; border: 2px solid var(--primary-color); }
         .btn-primary { background-color: var(--primary-color); color: white; }
         .btn-primary:hover { background-color: var(--primary-hover); border-color: var(--primary-hover); }
-        .btn-secondary { background-color: transparent; color: var(--text-color); border: 2px solid var(--border-color); }
-        .btn-secondary:hover { background-color: var(--primary-color); color: white; border-color: var(--primary-color); }
+        .btn-secondary { background-color: transparent; color: white; border: 2px solid white; }
+        .btn-secondary:hover { background-color: white; color: black; }
 
         /* Activities Section */
         .activities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
@@ -152,67 +174,186 @@
         .activity-card:hover { transform: translateY(-5px); }
         .activity-card h3 { margin-top: 0; color: var(--primary-color); }
 
-        /* Fund Section */
+        /* Fund Section - Redesigned */
         #fund { background-color: var(--card-bg); }
-        .fund-summary { display: flex; justify-content: center; gap: 30px; margin-bottom: 40px; text-align: center; }
-        .fund-card { padding: 20px 40px; border-radius: 8px; background-color: var(--background-color); }
-        .fund-card h3 { margin: 0 0 10px 0; font-size: 1.2rem; color: var(--secondary-color); }
-        .fund-card p { margin: 0; font-size: 2rem; font-weight: 700; color: var(--primary-color); }
-        .fund-details table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        .fund-details th, .fund-details td { padding: 12px 15px; text-align: left; border-bottom: 1px solid var(--border-color); }
-        .fund-details th { background-color: var(--background-color); font-weight: 600; }
+        .fund-container { display: flex; flex-direction: column; gap: 40px; }
+        .fund-summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
+        .fund-card { background-color: var(--background-color); padding: 25px; border-radius: 8px; display: flex; align-items: center; gap: 20px; box-shadow: var(--shadow); }
+        .fund-card .icon { font-size: 2.5rem; color: var(--primary-color); }
+        .fund-card .info h3 { margin: 0 0 5px 0; font-size: 1.1rem; color: var(--secondary-color); }
+        .fund-card .info p { margin: 0; font-size: 1.8rem; font-weight: 700; color: var(--text-color); }
+        .fund-details table { width: 100%; border-collapse: collapse; margin-top: 20px; background: var(--background-color); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+        .fund-details th, .fund-details td { padding: 15px; text-align: left; border-bottom: 1px solid var(--border-color); }
+        .fund-details th { background-color: var(--card-bg); font-weight: 600; }
         .fund-details tr:last-child td { border-bottom: none; }
-        .fund-details tr:hover { background-color: var(--background-color); }
-        .fund-details .income { color: #2ECC71; }
-        .fund-details .expense { color: #E74C3C; }
+        .fund-details .income { color: #2ECC71; font-weight: 600; }
+        .fund-details .expense { color: #E74C3C; font-weight: 600; }
 
         /* Community Section */
-        .year-tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; }
+        .year-tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
         .tab-btn { background-color: var(--card-bg); border: 1px solid var(--border-color); padding: 10px 20px; border-radius: 50px; cursor: pointer; transition: all 0.3s; font-weight: 500; }
-        .tab-btn:hover { background-color: var(--primary-hover); color: white; }
         .tab-btn.active { background-color: var(--primary-color); color: white; border-color: var(--primary-color); }
         .committee-content { display: none; }
-        .committee-content.active { display: block; }
+        .committee-content.active { display: block; animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         .community-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; }
         .member-card { background: var(--card-bg); text-align: center; padding: 20px; border-radius: 8px; box-shadow: var(--shadow); transition: transform 0.3s; }
-        .member-card:hover { transform: translateY(-5px); }
         .member-card img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 4px solid var(--primary-color); }
-        .member-card h4 { margin: 0 0 5px 0; }
-        .member-card p { margin: 0; color: var(--secondary-color); }
 
-        /* Gallery Section */
-        .gallery-event { margin-bottom: 50px; }
-        .gallery-event h3 { text-align: center; margin-bottom: 20px; font-size: 1.8rem; }
-        .gallery-carousel { position: relative; max-width: 800px; margin: auto; overflow: hidden; border-radius: 8px; box-shadow: var(--shadow); }
+        /* Gallery Section with Carousel */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
+        .gallery-carousel-wrapper { background: var(--card-bg); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+        .gallery-carousel-wrapper.hidden { display: none; }
+        .view-more-card {
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            min-height: 259px; /* Match height of other cards */
+        }
+        .view-more-card:hover { background-color: var(--primary-hover); }
+        .gallery-carousel { position: relative; }
         .carousel-images { display: flex; transition: transform 0.5s ease-in-out; }
-        .carousel-images img { width: 100%; flex-shrink: 0; display: block; }
-        .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background-color: rgba(0, 0, 0, 0.5); color: white; border: none; padding: 10px 15px; font-size: 24px; cursor: pointer; z-index: 10; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; }
-        .carousel-btn:hover { background-color: rgba(0, 0, 0, 0.8); }
+        .carousel-images img { width: 100%; height: 200px; object-fit: cover; flex-shrink: 0; }
+        .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background-color: rgba(0, 0, 0, 0.4); color: white; border: none; padding: 5px 10px; font-size: 20px; cursor: pointer; z-index: 10; border-radius: 50%; transition: background-color 0.3s; }
+        .carousel-btn:hover { background-color: rgba(0, 0, 0, 0.7); }
         .prev { left: 10px; }
         .next { right: 10px; }
+        .gallery-carousel-wrapper h4 { padding: 15px; margin: 0; text-align: center; }
 
-        /* Donation Section */
-        #donation { background-color: var(--card-bg); }
-        .donation-methods { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; text-align: center; }
-        .donation-card { background-color: var(--background-color); padding: 30px; border-radius: 8px; box-shadow: var(--shadow); }
-        .donation-card img { max-height: 50px; margin-bottom: 15px; }
+        /* Donation Section - Redesigned */
+        .donation-container { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .donation-appeal { padding-right: 20px; }
+        .donation-appeal h3 { font-size: 2rem; color: var(--primary-color); margin-bottom: 15px; }
+        .donation-appeal p { line-height: 1.8; }
+        .donation-methods { display: flex; flex-direction: column; gap: 20px; }
+        .donation-method-card { display: flex; align-items: center; gap: 20px; background-color: var(--card-bg); padding: 15px; border-radius: 8px; box-shadow: var(--shadow); }
+        .donation-method-card .logo { width: 50px; }
+        .donation-method-card .info h4 { margin: 0 0 5px 0; }
+        .donation-method-card .info p { margin: 0; font-weight: 600; letter-spacing: 1px; }
+        .donation-method-card .qr-code { margin-left: auto; }
+        .donation-method-card .qr-code img { width: 70px; height: 70px; border-radius: 4px; cursor: pointer; transition: transform 0.2s; }
+        .donation-method-card .qr-code img:hover { transform: scale(1.1); }
 
-        /* Contact & Footer */
-        .contact-info { text-align: center; font-size: 1.1rem; line-height: 1.8; }
+        /* QR Code Lightbox */
+        .qr-lightbox {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s;
+        }
+        .qr-lightbox-content {
+            max-width: 90%;
+            max-height: 80%;
+            width: 300px;
+            height: 300px;
+            animation: zoomIn 0.3s;
+        }
+        .close-qr-lightbox {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        @keyframes zoomIn { from {transform:scale(0)} to {transform:scale(1)} }
+
+        /* Contact Section - Redesigned */
+        #contact { background-color: var(--card-bg); }
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            align-items: center;
+            background-color: var(--background-color);
+            padding: 40px;
+            border-radius: 8px;
+        }
+        .contact-details-group .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .contact-item .contact-icon {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            width: 40px;
+        }
+        .contact-item .contact-text h4 {
+            margin: 0 0 5px 0;
+            color: var(--text-color);
+        }
+        .contact-item .contact-text p {
+            margin: 0;
+            color: var(--secondary-color);
+        }
+        .contact-map iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            border-radius: 8px;
+            border: none;
+        }
+
+
+        /* Footer */
         footer { background: var(--card-bg); text-align: center; padding: 20px 0; margin-top: 40px; border-top: 1px solid var(--border-color); }
 
-        /* Responsive (Mobile View) */
+        /* Responsive */
         @media (max-width: 768px) {
-            .nav-menu { position: fixed; left: -100%; top: 70px; flex-direction: column; background-color: var(--background-color); width: 100%; height: calc(100vh - 70px); text-align: center; transition: 0.3s; box-shadow: var(--shadow); padding-top: 20px; }
-            .nav-menu.active { left: 0; }
-            .nav-item { margin: 20px 0; }
-            .hamburger { display: block; }
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 0;
+                flex-direction: column;
+                background-color: var(--card-bg);
+                width: 50%;
+                max-width: 300px;
+                height: 100vh;
+                text-align: center;
+                transition: left 0.3s ease-in-out;
+                box-shadow: var(--shadow);
+                padding-top: 70px;
+                z-index: 1000;
+            }
+            .nav-menu.active {
+                left: 0;
+            }
+            .nav-item {
+                margin: 20px 0;
+            }
+            .hamburger {
+                display: block;
+                order: 1;
+                z-index: 1002;
+            }
+            .nav-logo {
+                order: 2;
+            }
+            .theme-switcher {
+                order: 3;
+            }
+            .nav-menu .dropdown-content {
+                display: none !important;
+            }
             .hamburger.active .bar:nth-child(2) { opacity: 0; }
             .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
             .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-            .hero-section h1 { font-size: 2.2rem; }
-            .section-title { font-size: 2rem; }
-            .fund-summary { flex-direction: column; }
+            .hero-section h1 { font-size: 2.5rem; }
+            .donation-container { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -230,6 +371,14 @@
                     <li class="nav-item"><a href="#about" class="nav-link">আমাদের সম্পর্কে</a></li>
                     <li class="nav-item"><a href="#activities" class="nav-link">কার্যক্রম</a></li>
                     <li class="nav-item"><a href="#fund" class="nav-link">ফান্ড</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#gallery" class="nav-link">ইভেন্ট</a>
+                        <div class="dropdown-content">
+                            <h4>আপকামিং ইভেন্ট</h4>
+                            <p>ফ্রী মেডিকেল ক্যাম্প ২০২৫</p>
+                            <small>তারিখ: ৩০ আগস্ট, ২০২৫</small>
+                        </div>
+                    </li>
                     <li class="nav-item"><a href="#community" class="nav-link">কমিউনিটি</a></li>
                     <li class="nav-item"><a href="#gallery" class="nav-link">গ্যালারি</a></li>
                     <li class="nav-item"><a href="#donation" class="nav-link">ডোনেশন</a></li>
@@ -237,7 +386,12 @@
                 </ul>
                 <div class="theme-switcher">
                     <input type="checkbox" id="theme-toggle">
-                    <label for="theme-toggle" class="theme-toggle-label"></label>
+                    <label for="theme-toggle" class="theme-toggle-label">
+                        <span class="ball">
+                           <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.25a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-1.5 0V3a.75.75 0 0 1 .75-.75ZM7.5 12a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM18.697 18.697a.75.75 0 1 0 1.06-1.06l-1.591-1.591a.75.75 0 1 0-1.06 1.06l1.591 1.591ZM12 18a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-1.5 0v-2.25A.75.75 0 0 1 12 18ZM5.303 18.697a.75.75 0 0 0 1.06 1.06l1.591-1.591a.75.75 0 1 0-1.06-1.06l-1.591 1.591ZM21 12a.75.75 0 0 1-.75.75h-2.25a.75.75 0 0 1 0-1.5h2.25a.75.75 0 0 1 .75.75ZM5.303 5.303a.75.75 0 0 0-1.06-1.06l-1.591 1.591a.75.75 0 1 0 1.06 1.06L5.303 5.303ZM18.697 5.303a.75.75 0 0 0-1.06 1.06l1.591 1.591a.75.75 0 1 0 1.06-1.06l-1.591-1.591ZM4.5 12a.75.75 0 0 1-.75.75H1.5a.75.75 0 0 1 0-1.5h2.25a.75.75 0 0 1 .75.75Z"/></svg>
+                           <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 0 1 .162.819A8.97 8.97 0 0 0 9 6a9 9 0 0 0 9 9 8.97 8.97 0 0 0 3.463-.69.75.75 0 0 1 .981.981A10.503 10.503 0 0 1 18 18a10.5 10.5 0 0 1-10.5-10.5c0-1.01.142-1.983.404-2.898.12-.339.446-.563.819-.584Z" clip-rule="evenodd" /></svg>
+                        </span>
+                    </label>
                 </div>
                 <div class="hamburger">
                     <span class="bar"></span>
@@ -251,6 +405,11 @@
     <main>
         <!-- About Us Section -->
         <section id="about" class="hero-section">
+            <div class="hero-bg-slider">
+                <img src="https://placehold.co/1200x800/16A085/FFFFFF?text=আমাদের+কাজ" alt="Background 1" class="active">
+                <img src="https://placehold.co/1200x800/566573/FFFFFF?text=শিক্ষা+উপকরণ+বিতরণ" alt="Background 2">
+                <img src="https://placehold.co/1200x800/34495E/FFFFFF?text=মেডিকেল+ক্যাম্প" alt="Background 3">
+            </div>
             <div class="container">
                 <h1>প্রত্যয় ইসলামিক পাঠাগার</h1>
                 <p class="tagline">প্রতিষ্ঠা: ২০১৭ | সাছিয়াখালী, ফরিদগঞ্জ, চাঁদপুর</p>
@@ -275,59 +434,37 @@
                     <div class="activity-card"><h3>ঈদ উপহার</h3><p>ঈদের সময় অসহায় ও দরিদ্র পরিবারের মুখে হাসি ফোটাতে উপহার সামগ্রী বিতরণ।</p></div>
                     <div class="activity-card"><h3>কুরআন শিক্ষা</h3><p>শিশুদের জন্য বিনামূল্যে কুরআন শিক্ষার ব্যবস্থা করা।</p></div>
                     <div class="activity-card"><h3>শিক্ষা উপকরণ বিতরণ</h3><p>দরিদ্র শিক্ষার্থীদের মাঝে বিনামূল্যে বই, খাতা, কলম ইত্যাদি বিতরণ।</p></div>
+                    <div class="activity-card"><h3>রক্তদান কর্মসূচি</h3><p>জরুরী প্রয়োজনে রক্তদানে মানুষকে উৎসাহিত করা ও রক্ত সংগ্রহ করা।</p></div>
+                    <div class="activity-card"><h3>পরিচ্ছন্নতা অভিযান</h3><p>গ্রাম ও আশেপাশের এলাকা পরিষ্কার-পরিচ্ছন্ন রাখতে নিয়মিত অভিযান চালানো।</p></div>
                 </div>
             </div>
         </section>
 
         <!-- Fund Section -->
         <section id="fund">
-            <div class="container">
+            <div class="container fund-container">
                 <h2 class="section-title">ফান্ডের স্বচ্ছতা</h2>
-                <div class="fund-summary">
+                <div class="fund-summary-grid">
                     <div class="fund-card">
-                        <h3>বর্তমান ফান্ড</h3>
-                        <p>৳৫০,০০০</p>
+                        <div class="icon">💰</div>
+                        <div class="info"><h3>বর্তমান ফান্ড</h3><p>৳৫০,০০০</p></div>
                     </div>
                     <div class="fund-card">
-                        <h3>সর্বমোট খরচ</h3>
-                        <p>৳৫,৫০,০০০</p>
+                        <div class="icon">📈</div>
+                        <div class="info"><h3>সর্বমোট খরচ</h3><p>৳৫,৫০,০০০</p></div>
                     </div>
                 </div>
                 <div class="fund-details">
                     <h3>আয়-ব্যয়ের হিসাব</h3>
                     <table>
-                        <thead>
-                            <tr>
-                                <th>বছর</th>
-                                <th class="income">মোট আয়</th>
-                                <th class="expense">মোট ব্যয়</th>
-                            </tr>
-                        </thead>
+                        <thead><tr><th>বছর</th><th class="income">মোট আয়</th><th class="expense">মোট ব্যয়</th></tr></thead>
                         <tbody>
-                            <tr>
-                                <td>২০২৪</td>
-                                <td class="income">৳২,০০,০০০</td>
-                                <td class="expense">৳১,৮০,০০০</td>
-                            </tr>
-                             <tr>
-                                <td>২০২৩</td>
-                                <td class="income">৳১,৫০,০০০</td>
-                                <td class="expense">৳১,৪০,০০০</td>
-                            </tr>
-                             <tr>
-                                <td>২০২২</td>
-                                <td class="income">৳১,২০,০০০</td>
-                                <td class="expense">৳১,১০,০০০</td>
-                            </tr>
-                             <tr>
-                                <td>২০২১</td>
-                                <td class="income">৳১,০০,০০০</td>
-                                <td class="expense">৳৯০,০০০</td>
-                            </tr>
+                            <tr><td>২০২৪</td><td class="income">৳২,০০,০০০</td><td class="expense">৳১,৮০,০০০</td></tr>
+                            <tr><td>২০২৩</td><td class="income">৳১,৫০,০০০</td><td class="expense">৳১,৪০,০০০</td></tr>
+                            <tr><td>২০২২</td><td class="income">৳১,২০,০০০</td><td class="expense">৳১,১০,০০০</td></tr>
+                            <tr><td>২০২১</td><td class="income">৳১,০০,০০০</td><td class="expense">৳৯০,০০০</td></tr>
                         </tbody>
                     </table>
-                    <h4 style="margin-top: 30px;">চলতি বছরের বিস্তারিত (২০২৫)</h4>
-                    <p>চলতি বছরে বিভিন্ন খাত থেকে মোট আয় হয়েছে ৳৭০,০০০ এবং শিক্ষা ও স্বাস্থ্য খাতে মোট ব্যয় হয়েছে ৳২০,০০০। বিস্তারিত তথ্যের জন্য আমাদের সাথে যোগাযোগ করুন।</p>
                 </div>
             </div>
         </section>
@@ -340,32 +477,31 @@
                     <button class="tab-btn active" data-year="2025">২০২৫</button>
                     <button class="tab-btn" data-year="2024">২০২৪</button>
                     <button class="tab-btn" data-year="2023">২০২৩</button>
+                    <button class="tab-btn" data-year="2022">২০২২</button>
+                    <button class="tab-btn" data-year="2021">২০২১</button>
+                    <button class="tab-btn" data-year="2020">২০২০</button>
+                    <button class="tab-btn" data-year="2019">২০১৯</button>
+                    <button class="tab-btn" data-year="2018">২০১৮</button>
+                    <button class="tab-btn" data-year="2017">২০১৭</button>
                 </div>
-
                 <!-- Committee 2025 -->
                 <div id="committee-2025" class="committee-content active">
                     <div class="community-grid">
-                        <div class="member-card"><img src="https://placehold.co/150x150/1ABC9C/FFFFFF?text=সদস্য" alt="সদস্য"><h4>সদস্যের নাম</h4><p>সভাপতি (২০২৫)</p></div>
+                        <div class="member-card"><img src="https://placehold.co/150x150/1ABC9C/FFFFFF?text=সদস্য" alt="সদস্য"><h4>সদস্যের নাম</h4><p>সভাপতি</p></div>
                         <div class="member-card"><img src="https://placehold.co/150x150/1ABC9C/FFFFFF?text=সদস্য" alt="সদস্য"><h4>সদস্যের নাম</h4><p>সাধারণ সম্পাদক</p></div>
                         <div class="member-card"><img src="https://placehold.co/150x150/1ABC9C/FFFFFF?text=সদস্য" alt="সদস্য"><h4>সদস্যের নাম</h4><p>কোষাধ্যক্ষ</p></div>
                         <div class="member-card"><img src="https://placehold.co/150x150/1ABC9C/FFFFFF?text=সদস্য" alt="সদস্য"><h4>সদস্যের নাম</h4><p>সদস্য</p></div>
                     </div>
                 </div>
-
-                <!-- Committee 2024 -->
-                <div id="committee-2024" class="committee-content">
-                    <div class="community-grid">
-                        <div class="member-card"><img src="https://placehold.co/150x150/566573/FFFFFF?text=সদস্য" alt="সদস্য"><h4>পূর্ববর্তী সদস্য</h4><p>সভাপতি (২০২৪)</p></div>
-                        <div class="member-card"><img src="https://placehold.co/150x150/566573/FFFFFF?text=সদস্য" alt="সদস্য"><h4>পূর্ববর্তী সদস্য</h4><p>সাধারণ সম্পাদক</p></div>
-                    </div>
-                </div>
-                
-                <!-- Committee 2023 -->
-                <div id="committee-2023" class="committee-content">
-                    <div class="community-grid">
-                         <div class="member-card"><img src="https://placehold.co/150x150/566573/FFFFFF?text=সদস্য" alt="সদস্য"><h4>আরও পুরনো সদস্য</h4><p>সভাপতি (২০২৩)</p></div>
-                    </div>
-                </div>
+                <!-- Other Committees -->
+                <div id="committee-2024" class="committee-content"></div>
+                <div id="committee-2023" class="committee-content"></div>
+                <div id="committee-2022" class="committee-content"></div>
+                <div id="committee-2021" class="committee-content"></div>
+                <div id="committee-2020" class="committee-content"></div>
+                <div id="committee-2019" class="committee-content"></div>
+                <div id="committee-2018" class="committee-content"></div>
+                <div id="committee-2017" class="committee-content"></div>
             </div>
         </section>
 
@@ -373,29 +509,37 @@
         <section id="gallery">
             <div class="container">
                 <h2 class="section-title">গ্যালারি</h2>
-                
-                <div class="gallery-event">
-                    <h3>ঈদ উপহার বিতরণ</h3>
-                    <div class="gallery-carousel">
-                        <div class="carousel-images">
-                            <img src="https://placehold.co/800x500/1ABC9C/FFFFFF?text=ঈদ+উপহার+১" alt="ঈদ উপহার ১">
-                            <img src="https://placehold.co/800x500/16A085/FFFFFF?text=ঈদ+উপহার+২" alt="ঈদ উপহার ২">
-                            <img src="https://placehold.co/800x500/1ABC9C/FFFFFF?text=ঈদ+উপহার+৩" alt="ঈদ উপহার ৩">
-                        </div>
-                        <button class="carousel-btn prev">&lt;</button>
-                        <button class="carousel-btn next">&gt;</button>
+                <div class="gallery-grid">
+                    <!-- Row 1 -->
+                    <div class="gallery-carousel-wrapper">
+                        <div class="gallery-carousel"><div class="carousel-images"><img src="https://placehold.co/400x300/1ABC9C/FFFFFF?text=ঈদ+১" alt="ঈদ উপহার ১"><img src="https://placehold.co/400x300/16A085/FFFFFF?text=ঈদ+২" alt="ঈদ উপহার ২"></div><button class="carousel-btn prev">&lt;</button><button class="carousel-btn next">&gt;</button></div><h4>ঈদ উপহার বিতরণ</h4>
                     </div>
-                </div>
-
-                <div class="gallery-event">
-                    <h3>ফ্রী মেডিকেল ক্যাম্প</h3>
-                    <div class="gallery-carousel">
-                        <div class="carousel-images">
-                            <img src="https://placehold.co/800x500/566573/FFFFFF?text=মেডিকেল+ক্যাম্প+১" alt="মেডিকেল ক্যাম্প ১">
-                            <img src="https://placehold.co/800x500/34495E/FFFFFF?text=মেডিকেল+ক্যাম্প+২" alt="মেডিকেল ক্যাম্প ২">
-                        </div>
-                        <button class="carousel-btn prev">&lt;</button>
-                        <button class="carousel-btn next">&gt;</button>
+                    <div class="gallery-carousel-wrapper">
+                        <div class="gallery-carousel"><div class="carousel-images"><img src="https://placehold.co/400x300/566573/FFFFFF?text=ক্যাম্প+১" alt="মেডিকেল ক্যাম্প ১"><img src="https://placehold.co/400x300/34495E/FFFFFF?text=ক্যাম্প+২" alt="মেডিকেল ক্যাম্প ২"><img src="https://placehold.co/400x300/2C3E50/FFFFFF?text=ক্যাম্প+৩" alt="মেডিকেল ক্যাম্প ৩"></div><button class="carousel-btn prev">&lt;</button><button class="carousel-btn next">&gt;</button></div><h4>ফ্রী মেডিকেল ক্যাম্প</h4>
+                    </div>
+                    <div class="gallery-carousel-wrapper">
+                        <div class="gallery-carousel"><div class="carousel-images"><img src="https://placehold.co/400x300/1ABC9C/FFFFFF?text=গাছ+১" alt="বৃক্ষরোপণ ১"></div><button class="carousel-btn prev">&lt;</button><button class="carousel-btn next">&gt;</button></div><h4>বৃক্ষরোপণ</h4>
+                    </div>
+                    <div class="gallery-carousel-wrapper">
+                        <div class="gallery-carousel"><div class="carousel-images"><img src="https://placehold.co/400x300/16A085/FFFFFF?text=রক্তদান" alt="রক্তদান"></div><button class="carousel-btn prev">&lt;</button><button class="carousel-btn next">&gt;</button></div><h4>রক্তদান কর্মসূচি</h4>
+                    </div>
+                    <!-- Row 2 -->
+                    <div class="gallery-carousel-wrapper">
+                        <div class="gallery-carousel"><div class="carousel-images"><img src="https://placehold.co/400x300/566573/FFFFFF?text=ত্রাণ+১" alt="ত্রাণ বিতরণ"></div><button class="carousel-btn prev">&lt;</button><button class="carousel-btn next">&gt;</button></div><h4>ত্রাণ বিতরণ</h4>
+                    </div>
+                    <div class="gallery-carousel-wrapper">
+                        <div class="gallery-carousel"><div class="carousel-images"><img src="https://placehold.co/400x300/34495E/FFFFFF?text=শিক্ষা+১" alt="শিক্ষা উপকরণ"></div><button class="carousel-btn prev">&lt;</button><button class="carousel-btn next">&gt;</button></div><h4>শিক্ষা উপকরণ</h4>
+                    </div>
+                    <div class="gallery-carousel-wrapper">
+                        <div class="gallery-carousel"><div class="carousel-images"><img src="https://placehold.co/400x300/566573/FFFFFF?text=পরিচ্ছন্নতা+১" alt="পরিচ্ছন্নতা অভিযান"></div><button class="carousel-btn prev">&lt;</button><button class="carousel-btn next">&gt;</button></div><h4>পরিচ্ছন্নতা অভিযান</h4>
+                    </div>
+                    <div class="gallery-carousel-wrapper view-more-card"><h3>আরো দেখুন...</h3></div>
+                    <!-- Hidden Cards -->
+                    <div class="gallery-carousel-wrapper hidden">
+                        <div class="gallery-carousel"><div class="carousel-images"><img src="https://placehold.co/400x300/1ABC9C/FFFFFF?text=শীতবস্ত্র+১" alt="শীতবস্ত্র বিতরণ"></div><button class="carousel-btn prev">&lt;</button><button class="carousel-btn next">&gt;</button></div><h4>শীতবস্ত্র বিতরণ</h4>
+                    </div>
+                    <div class="gallery-carousel-wrapper hidden">
+                        <div class="gallery-carousel"><div class="carousel-images"><img src="https://placehold.co/400x300/16A085/FFFFFF?text=ইফতার+১" alt="ইফতার মাহফিল"></div><button class="carousel-btn prev">&lt;</button><button class="carousel-btn next">&gt;</button></div><h4>ইফতার মাহফিল</h4>
                     </div>
                 </div>
             </div>
@@ -403,37 +547,89 @@
 
         <!-- Donation Section -->
         <section id="donation">
-            <div class="container">
-                <h2 class="section-title">ডোনেশন করুন</h2>
-                <p style="text-align:center; max-width: 600px; margin: -20px auto 40px;">আপনার সামান্য অনুদান অসহায় মানুষের মুখে হাসি ফোটাতে পারে। আমাদের কার্যক্রমে সহায়তা করতে নিচে দেওয়া নম্বরে অনুদান পাঠাতে পারেন।</p>
+            <div class="container donation-container">
+                <div class="donation-appeal">
+                    <h3>আমাদের সাথে যোগ দিন</h3>
+                    <p>আপনার সামান্য অনুদান সুবিধাবঞ্চিত মানুষের জীবনে বড় পরিবর্তন আনতে পারে। প্রত্যয় ইসলামিক পাঠাগারের সামাজিক কার্যক্রমে আপনার আর্থিক সহায়তা একটি মানবিক সমাজ গঠনে সহায়ক হবে। আপনার পাঠানো অর্থ সরাসরি শিক্ষা, স্বাস্থ্য ও দারিদ্র্য বিমোচনে ব্যবহৃত হবে।</p>
+                </div>
                 <div class="donation-methods">
-                    <div class="donation-card">
-                        <img src="https://placehold.co/150x50/E81123/FFFFFF?text=bKash" alt="বিকাশ">
-                        <h4>বিকাশ (পার্সোনাল)</h4>
-                        <p>01xxxxxxxxx</p>
+                    <div class="donation-method-card">
+                        <img class="logo" src="https://placehold.co/150x50/E81123/FFFFFF?text=bKash&fontsize=16" alt="বিকাশ">
+                        <div class="info">
+                            <h4>বিকাশ (পার্সোনাল)</h4>
+                            <p>01xxxxxxxxx</p>
+                        </div>
+                        <div class="qr-code">
+                            <img src="https://placehold.co/150x150/FFFFFF/000000?text=QR" alt="QR Code">
+                        </div>
                     </div>
-                    <div class="donation-card">
-                        <img src="https://placehold.co/150x50/F6921E/FFFFFF?text=Nagad" alt="নগদ">
-                        <h4>নগদ (পার্সোনাল)</h4>
-                        <p>01xxxxxxxxx</p>
+                    <div class="donation-method-card">
+                        <img class="logo" src="https://placehold.co/150x50/F6921E/FFFFFF?text=Nagad&fontsize=16" alt="নগদ">
+                        <div class="info">
+                            <h4>নগদ (পার্সোনাল)</h4>
+                            <p>01xxxxxxxxx</p>
+                        </div>
+                         <div class="qr-code">
+                            <img src="https://placehold.co/150x150/FFFFFF/000000?text=QR" alt="QR Code">
+                        </div>
                     </div>
-                    <div class="donation-card">
-                        <img src="https://placehold.co/150x50/8C2C90/FFFFFF?text=Rocket" alt="রকেট">
-                        <h4>রকেট (পার্সোনাল)</h4>
-                        <p>01xxxxxxxxx</p>
+                    <div class="donation-method-card">
+                        <img class="logo" src="https://placehold.co/150x50/8C2C90/FFFFFF?text=Rocket&fontsize=16" alt="রকেট">
+                        <div class="info">
+                            <h4>রকেট (পার্সোনাল)</h4>
+                            <p>01xxxxxxxxx</p>
+                        </div>
+                         <div class="qr-code">
+                            <img src="https://placehold.co/150x150/FFFFFF/000000?text=QR" alt="QR Code">
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- QR Code Lightbox -->
+        <div class="qr-lightbox">
+            <span class="close-qr-lightbox">&times;</span>
+            <img class="qr-lightbox-content" id="qr-lightbox-img">
+        </div>
+
         <!-- Contact Section -->
         <section id="contact">
             <div class="container">
                 <h2 class="section-title">যোগাযোগ</h2>
-                <div class="contact-info">
-                    <p><strong>ঠিকানা:</strong> প্রত্যয় ইসলামিক পাঠাগার, সাছিয়াখালী, ফরিদগঞ্জ, চাঁদপুর।</p>
-                    <p><strong>ইমেইল:</strong> contact@prottay.org</p>
-                    <p><strong>ফোন:</strong> +880 123 456 7890</p>
+                <div class="contact-wrapper">
+                    <div class="contact-details-group">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 005.16-4.252l.001-.002a16.975 16.975 0 003.86-5.807l.002-.005A16.975 16.975 0 0021 8.25c0-5.908-4.792-10.7-10.7-10.7S-.2 2.342-.2 8.25c0 4.106 2.336 7.66 5.576 9.49l.002.001a16.975 16.975 0 005.806 3.86l.005.002a16.975 16.975 0 004.252 5.16l.041.07.015.028a.76.76 0 00.723 0l.016-.028.04-.071zM12 11.25a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" /></svg>
+                            </div>
+                            <div class="contact-text">
+                                <h4>ঠিকানা</h4>
+                                <p>প্রত্যয় ইসলামিক পাঠাগার, সাছিয়াখালী, ফরিদগঞ্জ, চাঁদপুর।</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" /><path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" /></svg>
+                            </div>
+                            <div class="contact-text">
+                                <h4>ইমেইল</h4>
+                                <p>contact@prottay.org</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.298-.083.465a15.207 15.207 0 006.88 6.88.465.465 0 00.465-.083l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clip-rule="evenodd" /></svg>
+                            </div>
+                            <div class="contact-text">
+                                <h4>ফোন</h4>
+                                <p>+880 123 456 7890</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3654.120929297637!2d90.7483923154215!3d23.67138398462947!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x37545f4b8a2a4b7d%3A0x8e3a2a4b7d8e3a2a!2sFaridganj%2C%20Chandpur!5e0!3m2!1sen!2sbd!4v1678886400000!5m2!1sen!2sbd" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
                 </div>
             </div>
         </section>
@@ -448,7 +644,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-
             // Mobile Menu Toggle
             const hamburger = document.querySelector('.hamburger');
             const navMenu = document.querySelector('.nav-menu');
@@ -486,7 +681,8 @@
                     if (entry.isIntersecting) {
                         navLinks.forEach(link => {
                             link.classList.remove('active');
-                            if (link.getAttribute('href').substring(1) === entry.target.id) {
+                            const href = link.getAttribute('href');
+                            if (href && href.substring(1) === entry.target.id) {
                                 link.classList.add('active');
                             }
                         });
@@ -495,7 +691,64 @@
             }, { rootMargin: '-40% 0px -60% 0px' });
             sections.forEach(section => observer.observe(section));
 
+            // Hero Background Slider
+            const bgSlider = document.querySelector('.hero-bg-slider');
+            if (bgSlider) {
+                const bgImages = bgSlider.querySelectorAll('img');
+                if (bgImages.length > 1) {
+                    let currentBgIndex = 0;
+                    setInterval(() => {
+                        bgImages[currentBgIndex].classList.remove('active');
+                        currentBgIndex = (currentBgIndex + 1) % bgImages.length;
+                        bgImages[currentBgIndex].classList.add('active');
+                    }, 3000);
+                }
+            }
+
             // Community Section Tabs
+            const committeeData = {
+                2024: [
+                    { name: 'পূর্ববর্তী সদস্য', role: 'সভাপতি' },
+                    { name: 'পূর্ববর্তী সদস্য', role: 'সাধারণ সম্পাদক' },
+                    { name: 'পূর্ববর্তী সদস্য', role: 'কোষাধ্যক্ষ' },
+                ],
+                2023: [
+                    { name: 'আরও পুরনো সদস্য', role: 'সভাপতি' },
+                    { name: 'আরও পুরনো সদস্য', role: 'সাধারণ সম্পাদক' },
+                    { name: 'আরও পুরনো সদস্য', role: 'কোষাধ্যক্ষ' },
+                ],
+                2022: [
+                    { name: 'সদস্যের নাম', role: 'সভাপতি' },
+                    { name: 'সদস্যের নাম', role: 'সাধারণ সম্পাদক' },
+                    { name: 'সদস্যের নাম', role: 'কোষাধ্যক্ষ' },
+                ],
+                2021: [
+                    { name: 'সদস্যের নাম', role: 'সভাপতি' },
+                    { name: 'সদস্যের নাম', role: 'সাধারণ সম্পাদক' },
+                    { name: 'সদস্যের নাম', role: 'কোষাধ্যক্ষ' },
+                ],
+                2020: [
+                    { name: 'সদস্যের নাম', role: 'সভাপতি' },
+                    { name: 'সদস্যের নাম', role: 'সাধারণ সম্পাদক' },
+                    { name: 'সদস্যের নাম', role: 'কোষাধ্যক্ষ' },
+                ],
+                2019: [
+                    { name: 'সদস্যের নাম', role: 'সভাপতি' },
+                    { name: 'সদস্যের নাম', role: 'সাধারণ সম্পাদক' },
+                    { name: 'সদস্যের নাম', role: 'কোষাধ্যক্ষ' },
+                ],
+                2018: [
+                    { name: 'সদস্যের নাম', role: 'সভাপতি' },
+                    { name: 'সদস্যের নাম', role: 'সাধারণ সম্পাদক' },
+                    { name: 'সদস্যের নাম', role: 'কোষাধ্যক্ষ' },
+                ],
+                2017: [
+                    { name: 'প্রতিষ্ঠাতা সদস্য', role: 'সভাপতি' },
+                    { name: 'প্রতিষ্ঠাতা সদস্য', role: 'সাধারণ সম্পাদক' },
+                    { name: 'প্রতিষ্ঠাতা সদস্য', role: 'কোষাধ্যক্ষ' },
+                ],
+            };
+
             const tabButtons = document.querySelectorAll('.tab-btn');
             const committeeContents = document.querySelectorAll('.committee-content');
             tabButtons.forEach(button => {
@@ -503,18 +756,33 @@
                     tabButtons.forEach(btn => btn.classList.remove('active'));
                     button.classList.add('active');
                     const year = button.getAttribute('data-year');
+                    
                     committeeContents.forEach(content => {
                         content.classList.remove('active');
                         if (content.id === `committee-${year}`) {
+                            if (year !== '2025' && !content.innerHTML.trim()) {
+                                const members = committeeData[year];
+                                const grid = document.createElement('div');
+                                grid.className = 'community-grid';
+                                members.forEach(member => {
+                                    grid.innerHTML += `
+                                        <div class="member-card">
+                                            <img src="https://placehold.co/150x150/566573/FFFFFF?text=সদস্য" alt="সদস্য">
+                                            <h4>${member.name}</h4>
+                                            <p>${member.role}</p>
+                                        </div>
+                                    `;
+                                });
+                                content.appendChild(grid);
+                            }
                             content.classList.add('active');
                         }
                     });
                 });
             });
 
-            // Gallery Carousel
-            const carousels = document.querySelectorAll('.gallery-carousel');
-            carousels.forEach(carousel => {
+            // Gallery Carousels
+            document.querySelectorAll('.gallery-carousel').forEach(carousel => {
                 const imagesContainer = carousel.querySelector('.carousel-images');
                 const prevBtn = carousel.querySelector('.prev');
                 const nextBtn = carousel.querySelector('.next');
@@ -522,26 +790,81 @@
                 
                 let currentIndex = 0;
                 const totalImages = images.length;
-
-                if (totalImages <= 1) {
-                    prevBtn.style.display = 'none';
-                    nextBtn.style.display = 'none';
-                    return;
-                }
+                let autoPlayInterval;
 
                 function updateCarousel() {
                     imagesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
                 }
 
-                prevBtn.addEventListener('click', () => {
-                    currentIndex = (currentIndex - 1 + totalImages) % totalImages;
-                    updateCarousel();
-                });
+                function startAutoPlay() {
+                    if (totalImages <= 1) return;
+                    stopAutoPlay(); // Clear existing interval
+                    autoPlayInterval = setInterval(() => {
+                        currentIndex = (currentIndex + 1) % totalImages;
+                        updateCarousel();
+                    }, 1000); // Change image every 1 second
+                }
 
-                nextBtn.addEventListener('click', () => {
-                    currentIndex = (currentIndex + 1) % totalImages;
-                    updateCarousel();
+                function stopAutoPlay() {
+                    clearInterval(autoPlayInterval);
+                }
+
+                if (totalImages <= 1) {
+                    prevBtn.style.display = 'none';
+                    nextBtn.style.display = 'none';
+                } else {
+                     prevBtn.addEventListener('click', () => {
+                        currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+                        updateCarousel();
+                        startAutoPlay(); // Restart autoplay
+                    });
+
+                    nextBtn.addEventListener('click', () => {
+                        currentIndex = (currentIndex + 1) % totalImages;
+                        updateCarousel();
+                        startAutoPlay(); // Restart autoplay
+                    });
+                    
+                    carousel.addEventListener('mouseenter', stopAutoPlay);
+                    carousel.addEventListener('mouseleave', startAutoPlay);
+
+                    startAutoPlay();
+                }
+            });
+            
+            // Gallery View More
+            const viewMoreCard = document.querySelector('.view-more-card');
+            if(viewMoreCard) {
+                viewMoreCard.addEventListener('click', () => {
+                    document.querySelectorAll('.gallery-carousel-wrapper.hidden').forEach(card => {
+                        card.classList.remove('hidden');
+                    });
+                    viewMoreCard.style.display = 'none';
                 });
+            }
+
+            // QR Code Lightbox
+            const qrImages = document.querySelectorAll('.qr-code img');
+            const qrLightbox = document.querySelector('.qr-lightbox');
+            const qrLightboxImg = document.getElementById('qr-lightbox-img');
+            const closeQrBtn = document.querySelector('.close-qr-lightbox');
+
+            qrImages.forEach(img => {
+                img.addEventListener('click', () => {
+                    qrLightbox.style.display = 'flex';
+                    qrLightboxImg.src = img.src;
+                });
+            });
+
+            const closeQrLightbox = () => {
+                qrLightbox.style.display = 'none';
+            }
+
+            closeQrBtn.addEventListener('click', closeQrLightbox);
+            qrLightbox.addEventListener('click', (e) => {
+                if (e.target === qrLightbox) {
+                    closeQrLightbox();
+                }
             });
 
         });
