@@ -454,6 +454,144 @@
             .hero-section h1 { font-size: 2.5rem; }
             .donation-container { grid-template-columns: 1fr; }
         }
+
+        /* Gallery Section */
+        #gallery {
+            background-color: var(--card-bg);
+            padding: 60px 0;
+        }
+        .gallery-year-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        .gallery-year-btn {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        .gallery-year-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        .gallery-event-folders {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+        .gallery-event-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 18px 10px 10px 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: box-shadow 0.2s, transform 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 210px;
+        }
+        .gallery-event-card:hover {
+            box-shadow: 0 4px 24px 0 rgba(0,0,0,0.10);
+            transform: translateY(-4px) scale(1.03);
+        }
+        .gallery-event-card img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 8px 0 rgba(0,0,0,0.07);
+            background: #f5f5f5;
+        }
+        .gallery-event-card h4 {
+            font-size: 1.1rem;
+            margin: 0 0 5px 0;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        .gallery-event-card p {
+            margin: 0;
+            color: var(--secondary-color);
+            font-size: 0.95rem;
+        }
+        @media (max-width: 1200px) {
+            .gallery-event-folders {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 900px) {
+            .gallery-event-folders {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 600px) {
+            .gallery-event-folders {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Gallery Event Details Images Grid */
+        .gallery-event-details {
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-top: 30px;
+            padding: 30px 20px 20px 20px;
+            animation: fadeIn 0.5s;
+        }
+        .gallery-event-details h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+        .gallery-event-details .event-images {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .gallery-event-details .event-images img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            background: #f5f5f5;
+        }
+        .gallery-event-details .event-images img:hover {
+            transform: scale(1.05);
+        }
+        @media (max-width: 900px) {
+            .gallery-event-details .event-images {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 600px) {
+            .gallery-event-details .event-images {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation for fadeIn */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Animation for zoomIn */
+        @keyframes zoomIn {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
     </style>
 </head>
 <body>
@@ -520,10 +658,10 @@
             </div>
             <div class="container">
                 <h1>প্রত্যয় ইসলামী পাঠাগার</h1>
-                <p class="tagline">প্রতিষ্ঠা: ২০১৮ <br>
+                <p class="tagline">প্রতিষ্ঠা: ২০১৭<br>
                     সাছিয়াখালী, ফরিদগঞ্জ, চাঁদপুর</p>
                 <p class="description">
-                    'প্রত্যয় ইসলামী পাঠাগার' একটি অরাজনৈতিক ও অলাভজনক সামাজিক সংগঠন। ২০১৮ সাল থেকে আমরা চাঁদপুর জেলার ফরিদগঞ্জ উপজেলার সাছিয়াখালী গ্রামে শিক্ষা, স্বাস্থ্য ও সামাজিক উন্নয়নে কাজ করে আসছি। আমাদের লক্ষ্য হলো একটি শিক্ষিত, সুস্থ ও মানবিক সমাজ গঠনে ভূমিকা রাখা। <br>
+                    'প্রত্যয় ইসলামী পাঠাগার' একটি অরাজনৈতিক ও অলাভজনক সামাজিক সংগঠন। ২০১৭ সাল থেকে আমরা চাঁদপুর জেলার ফরিদগঞ্জ উপজেলার সাছিয়াখালী গ্রামে শিক্ষা, স্বাস্থ্য ও সামাজিক উন্নয়নে কাজ করে আসছি। আমাদের লক্ষ্য হলো একটি শিক্ষিত, সুস্থ ও মানবিক সমাজ গঠনে ভূমিকা রাখা। <br>
 
                     আমরা বিনামূল্যে চিকিৎসা সেবা, অক্সিজেন সরবরাহ, ত্রাণ বিতরণ, কুরআন শিক্ষা, রক্তদান কর্মসূচি, পরিচ্ছন্নতা অভিযান ইত্যাদি কার্যক্রম পরিচালনা করে আসছি।<br>
 
@@ -765,205 +903,21 @@
         <section id="gallery">
             <div class="container">
                 <h2 class="section-title">গ্যালারি</h2>
-                <div class="gallery-grid">
-                    <!-- Row 1 -->
-                    <div class="gallery-carousel-wrapper">
-                        <div class="gallery-carousel">
-                            <div class="carousel-images">
-                                <img src="figures/p-16-9-6.png" alt="ফ্রী মেডিকেল ক্যাম্প - ২০২৪">
-                                <img src="figures/medical-camp-24/received_1118837162554665.jpeg" alt="ফ্রী মেডিকেল ক্যাম্প - ২০২৪ ২">
-                                <img src="figures/medical-camp-24/received_1148614576285412.jpeg" alt="ফ্রী মেডিকেল ক্যাম্প - ২০২৪ ৩">  
-
-                                <img src="figures/medical-camp-24/received_1193000838545138.jpeg" alt="ফ্রী মেডিকেল ক্যাম্প - ২০২৪ ৪">
-                                <img src="figures/medical-camp-24/received_1220073025646483.jpeg" alt="ফ্রী মেডিকেল ক্যাম্প - ২০২৪ ৫">
-                                <img src="figures/medical-camp-24/received_384721424057997.jpeg" alt="ফ্রী মেডিকেল ক্যাম্প - ২০২৪ ৬">
-                                <img src="figures/medical-camp-24/received_448740944540199.jpeg" alt="ফ্রী মেডিকেল ক্যাম্প - ২০২৪ ৭">
-                                <img src="figures/medical-camp-24/received_995587275287288.jpeg" alt="ফ্রী মেডিকেল ক্যাম্প - ২০২৪ ৮">
-
-                            </div>
-                            <button class="carousel-btn prev">&lt;</button>
-                            <button class="carousel-btn next">&gt;</button>
-                        </div>
-                        <h4>ফ্রী মেডিকেল ক্যাম্প - ২০২৪</h4>
-                    </div>
-                    <div class="gallery-carousel-wrapper">
-                        <div class="gallery-carousel">
-                            <div class="carousel-images">
-                                <img src="figures/tran-24/tran-24-1.jpeg" alt="বন্যা ত্রাণ ও পূনর্বাসন কার্যক্রম -২০২৪">
-                                <img src="figures/tran-24/tran-24-2.jpeg" alt="বন্যা ত্রাণ ও পূনর্বাসন কার্যক্রম -২০২৪">
-                                <img src="figures/tran-24/tran-24-3.jpeg" alt="বন্যা ত্রাণ ও পূনর্বাসন কার্যক্রম -২০২৪">
-                                <img src="figures/tran-24/tran-24-4.jpeg" alt="বন্যা ত্রাণ ও পূনর্বাসন কার্যক্রম -২০২৪">
-                                <img src="figures/tran-24/tran-24-5.jpeg" alt="বন্যা ত্রাণ ও পূনর্বাসন কার্যক্রম -২০২৪">
-                                <img src="figures/tran-24/tran-24-6.jpeg" alt="বন্যা ত্রাণ ও পূনর্বাসন কার্যক্রম -২০২৪">
-                                <img src="figures/tran-24/tran-24-7.jpeg" alt="বন্যা ত্রাণ ও পূনর্বাসন কার্যক্রম -২০২৪">
-                                <img src="figures/tran-24/tran-24-8.jpeg" alt="বন্যা ত্রাণ ও পূনর্বাসন কার্যক্রম -২০২৪">
-                                <img src="figures/tran-24/tran-24-9.jpeg" alt="বন্যা ত্রাণ ও পূনর্বাসন কার্যক্রম -২০২৪">
-                                <img src="figures/tran-24/tran-24-10.jpeg"alt="বন্যা ত্রাণ ও পূনর্বাসন কার্যক্রম -২০২৪">
-                            </div>
-                            <button class="carousel-btn prev">&lt;</button>
-                            <button class="carousel-btn next">&gt;</button>
-                        </div>
-                        <h4>বন্যা ত্রাণ ও পূনর্বাসন কার্যক্রম -২০২৪</h4>
-                    </div>
-                    <div class="gallery-carousel-wrapper">
-                        <div class="gallery-carousel">
-                            <div class="carousel-images">
-                                <img src="figures/bonna-24/bonna-24-1.jpeg" alt="বন্যা পরিস্থিতি পর্যবেক্ষণ - ২০২৪">
-                                <img src="figures/bonna-24/bonna-24-2.jpeg" alt="বন্যা পরিস্থিতি পর্যবেক্ষণ - ২০২৪ ২">
-                                <img src="figures/bonna-24/bonna-24-3.jpeg" alt="বন্যা পরিস্থিতি পর্যবেক্ষণ - ২০২৪ ৩">
-                                <img src="figures/bonna-24/bonna-24-4.jpeg" alt="বন্যা পরিস্থিতি পর্যবেক্ষণ - ২০২৪ ৪">
-                                <img src="figures/bonna-24/bonna-24-5.jpeg" alt="বন্যা পরিস্থিতি পর্যবেক্ষণ - ২০২৪ ৫">
-                                <img src="figures/bonna-24/bonna-24-6.jpeg" alt="বন্যা পরিস্থিতি পর্যবেক্ষণ - ২০২৪ ৬">
-                                <img src="figures/bonna-24/bonna-24-7.jpeg" alt="বন্যা পরিস্থিতি পর্যবেক্ষণ - ২০২৪ ৭">
-                                <img src="figures/bonna-24/bonna-24-8.jpeg" alt="বন্যা পরিস্থিতি পর্যবেক্ষণ - ২০২৪ ৮">
-                                <img src="figures/bonna-24/bonna-24-9.jpeg" alt="বন্যা পরিস্থিতি পর্যবেক্ষণ - ২০২৪ ৯">
-                            </div>
-                            <button class="carousel-btn prev">&lt;</button>
-                            <button class="carousel-btn next">&gt;</button>
-                        </div>
-                        <h4>বন্যা পরিস্থিতি পর্যবেক্ষণ - ২০২৪</h4>
-                    </div>
-                    <div class="gallery-carousel-wrapper">
-                        <div class="gallery-carousel">
-                            <div class="carousel-images">
-                                <img src="figures/hijab-tupi-23/hijab-tupi-23-1.jpeg" alt="টুপি ও হিজাব বিতরণ - ২০২৩">
-                                <img src="figures/hijab-tupi-23/hijab-tupi-23-2.jpeg" alt="টুপি ও হিজাব বিতরণ - ২০২৩ ২">
-                                <img src="figures/hijab-tupi-23/hijab-tupi-23-3.jpeg" alt="টুপি ও হিজাব বিতরণ - ২০২৩ ৩">
-                                <img src="figures/hijab-tupi-23/hijab-tupi-23-4.jpeg" alt="টুপি ও হিজাব বিতরণ - ২০২৩ ৪">
-                                <img src="figures/hijab-tupi-23/hijab-tupi-23-5.jpeg" alt="টুপি ও হিজাব বিতরণ - ২০২৩ ৫">
-                                <img src="figures/hijab-tupi-23/hijab-tupi-23-6.jpeg" alt="টুপি ও হিজাব বিতরণ - ২০২৩ ৬">
-                                <img src="figures/hijab-tupi-23/hijab-tupi-23-7.jpeg" alt="টুপি ও হিজাব বিতরণ - ২০২৩ ৭">
-                                <img src="figures/hijab-tupi-23/hijab-tupi-23-8.jpeg" alt="টুপি ও হিজাব বিতরণ - ২০২৩ ৮">
-                                <img src="figures/hijab-tupi-23/hijab-tupi-23-9.jpeg" alt="টুপি ও হিজাব বিতরণ - ২০২৩ ৯">
-                            </div>
-                            <button class="carousel-btn prev">&lt;</button>
-                            <button class="carousel-btn next">&gt;</button>
-                        </div>
-                        <h4>টুপি ও হিজাব বিতরণ - ২০২৩</h4>
-                    </div>
-                    <!-- Row 2 -->
-                    <div class="gallery-carousel-wrapper">
-                        <div class="gallery-carousel">
-                            <div class="carousel-images">
-                                <img src="figures/quran-sikkha-22/quran-sikkha-22-1.jpeg" alt="ফ্রি কোরআন শিক্ষা কোর্স - ২০২২">
-                                <img src="figures/quran-sikkha-22/quran-sikkha-22-2.jpeg" alt="ফ্রি কোরআন শিক্ষা কোর্স - ২০২২ ২">
-                                <img src="figures/quran-sikkha-22/quran-sikkha-22-3.jpeg" alt="ফ্রি কোরআন শিক্ষা কোর্স - ২০২২ ৩">
-                                <img src="figures/quran-sikkha-22/quran-sikkha-22-4.jpeg" alt="ফ্রি কোরআন শিক্ষা কোর্স - ২০২২ ৪">
-                                <img src="figures/quran-sikkha-22/quran-sikkha-22-5.jpeg" alt="ফ্রি কোরআন শিক্ষা কোর্স - ২০২২ ৫">
-                            </div>
-                            <button class="carousel-btn prev">&lt;</button>
-                            <button class="carousel-btn next">&gt;</button>
-                        </div>
-                        <h4>ফ্রি কোরআন শিক্ষা কোর্স - ২০২২</h4>
-                    </div>
-                    <div class="gallery-carousel-wrapper">
-                        <div class="gallery-carousel">
-                            <div class="carousel-images">
-                                <img src="figures/qurbani-22/qurbani-22-1.jpeg" alt="কোরবানির মাংস বিতরণ - ২০২২ ১">
-                                <img src="figures/qurbani-22/qurbani-22-2.jpeg" alt="কোরবানির মাংস বিতরণ - ২০২২ ২">
-                                <img src="figures/qurbani-22/qurbani-22-3.jpeg" alt="কোরবানির মাংস বিতরণ - ২০২২ ৩">
-                                <img src="figures/qurbani-22/qurbani-22-4.jpeg" alt="কোরবানির মাংস বিতরণ - ২০২২ ৪">
-                                <img src="figures/qurbani-22/qurbani-22-5.jpeg" alt="কোরবানির মাংস বিতরণ - ২০২২ ৫">
-                                <img src="figures/qurbani-22/qurbani-22-6.jpeg" alt="কোরবানির মাংস বিতরণ - ২০২২ ৬">
-                            </div>
-                            <button class="carousel-btn prev">&lt;</button>
-                            <button class="carousel-btn next">&gt;</button>
-                        </div>
-                        <h4>কোরবানির মাংস বিতরণ - ২০২২</h4>
-                    </div>
-                    <div class="gallery-carousel-wrapper">
-                        <div class="gallery-carousel">
-                            <div class="carousel-images">
-                                <img src="figures/eid-ul-fitr-22/eid-ul-fitr-22-1.jpeg" alt="ঈদুল ফিতর উপহার সামগ্রী বিতরণ - ২০২২ ১">
-                                <img src="figures/eid-ul-fitr-22/eid-ul-fitr-22-2.jpeg" alt="ঈদুল ফিতর উপহার সামগ্রী বিতরণ - ২০২২ ২">
-                                <img src="figures/eid-ul-fitr-22/eid-ul-fitr-22-3.jpeg" alt="ঈদুল ফিতর উপহার সামগ্রী বিতরণ - ২০২২ ৩">
-                                <img src="figures/eid-ul-fitr-22/eid-ul-fitr-22-4.jpeg" alt="ঈদুল ফিতর উপহার সামগ্রী বিতরণ - ২০২২ ৪">
-                                <img src="figures/eid-ul-fitr-22/eid-ul-fitr-22-5.jpeg" alt="ঈদুল ফিতর উপহার সামগ্রী বিতরণ - ২০২২ ৫">
-                                <img src="figures/eid-ul-fitr-22/eid-ul-fitr-22-6.jpeg" alt="ঈদুল ফিতর উপহার সামগ্রী বিতরণ - ২০২২ ৬">
-                            </div>
-                            <button class="carousel-btn prev">&lt;</button>
-                            <button class="carousel-btn next">&gt;</button>
-                        </div>
-                        <h4>ঈদুল ফিতর উপহার সামগ্রী বিতরণ - ২০২২</h4>
-                    </div>
-                    <div class="gallery-carousel-wrapper view-more-card"><h3>আরো দেখুন...</h3></div>
-                    <!-- Hidden Cards -->
-                    <div class="gallery-carousel-wrapper hidden">
-                        <div class="gallery-carousel">
-                            <div class="carousel-images">
-                                <img src="figures/oxygen/oxygen-1.jpeg" alt="ফ্রি অক্সিজেন সেবা ">
-                                <img src="figures/oxygen/oxygen-2.jpeg" alt="ফ্রি অক্সিজেন সেবা ২">
-                                <img src="figures/oxygen/oxygen-3.jpeg" alt="ফ্রি অক্সিজেন সেবা ৩">
-                                <img src="figures/oxygen/oxygen-4.jpeg" alt="ফ্রি অক্সিজেন সেবা ৪">
-                                <img src="figures/oxygen/oxygen-5.jpeg" alt="ফ্রি অক্সিজেন সেবা ৫">    
-                                <img src="figures/oxygen/oxygen-6.jpeg" alt="ফ্রি অক্সিজেন সেবা ৬">
-                                <img src="figures/oxygen/oxygen-7.jpeg" alt="ফ্রি অক্সিজেন সেবা ৭">
-                                <img src="figures/oxygen/oxygen-8.jpeg" alt="ফ্রি অক্সিজেন সেবা ৮">
-                            </div>
-                            <button class="carousel-btn prev">&lt;</button>
-                            <button class="carousel-btn next">&gt;</button>
-                        </div>
-                        <h4>ফ্রি অক্সিজেন সেবা - 2020-Running</h4>
-                    </div>
-                    <div class="gallery-carousel-wrapper hidden">
-                        <div class="gallery-carousel">
-                            <div class="carousel-images">
-                                <img src="figures/corona-20/corona-20-1.jpeg" alt="করোনা মহামারীতে খাদ্য সামগ্রী বিতরণ - ২০২০">
-                                <img src="figures/corona-20/corona-20-2.jpeg" alt="করোনা মহামারীতে খাদ্য সামগ্রী বিতরণ - ২০২০ ২">
-                                <img src="figures/corona-20/corona-20-3.jpeg" alt="করোনা মহামারীতে খাদ্য সামগ্রী বিতরণ - ২০২০ ৩">
-                                <img src="figures/corona-20/corona-20-4.jpeg" alt="করোনা মহামারীতে খাদ্য সামগ্রী বিতরণ - ২০২০ ৪">
-                            </div>
-                            <button class="carousel-btn prev">&lt;</button>
-                            <button class="carousel-btn next">&gt;</button>
-                        </div>
-                        <h4>করোনা মহামারীতে খাদ্য সামগ্রী বিতরণ - ২০২০</h4>
-                    </div>
-                    <div class="gallery-carousel-wrapper hidden">
-                        <div class="gallery-carousel">
-                            <div class="carousel-images">
-                                <img src="figures/iftar-21/iftar-21-1.jpeg" alt="ইফতার সামগ্রী বিতরণ - ২০২১">
-                                <img src="figures/iftar-21/iftar-21-2.jpeg" alt="ইফতার সামগ্রী বিতরণ - ২০২১ ২">
-                                <img src="figures/iftar-21/iftar-21-3.jpeg" alt="ইফতার সামগ্রী বিতরণ - ২০২১ ৩">
-                            </div>
-                            <button class="carousel-btn prev">&lt;</button>
-                            <button class="carousel-btn next">&gt;</button>
-                        </div>
-                        <h4>ইফতার সামগ্রী বিতরণ - ২০২১</h4>
-                    </div>
-                    <div class="gallery-carousel-wrapper hidden">
-                        <div class="gallery-carousel">
-                            <div class="carousel-images">
-                                <img src="figures/bijoy-dibos-21/bijoy-dibos-21-1.jpeg" alt="বিজয় দিবস ইসলামি সংস্কৃতি প্রোগ্রাম - ২০২১">
-                                <img src="figures/bijoy-dibos-21/bijoy-dibos-21-2.jpeg" alt="বিজয় দিবস ইসলামি সংস্কৃতি প্রোগ্রাম - ২০২১ ২">
-                                <img src="figures/bijoy-dibos-21/bijoy-dibos-21-3.jpeg" alt="বিজয় দিবস ইসলামি সংস্কৃতি প্রোগ্রাম - ২০২১ ৩">
-                                <img src="figures/bijoy-dibos-21/bijoy-dibos-21-4.jpeg" alt="বিজয় দিবস ইসলামি সংস্কৃতি প্রোগ্রাম - ২০২১ ৪">
-                                <img src="figures/bijoy-dibos-21/bijoy-dibos-21-5.jpeg" alt="বিজয় দিবস ইসলামি সংস্কৃতি প্রোগ্রাম - ২০২১ ৫">
-                                <img src="figures/bijoy-dibos-21/bijoy-dibos-21-6.jpeg" alt="বিজয় দিবস ইসলামি সংস্কৃতি প্রোগ্রাম - ২০২১ ৬">
-                                <img src="figures/bijoy-dibos-21/bijoy-dibos-21-7.jpeg" alt="বিজয় দিবস ইসলামি সংস্কৃতি প্রোগ্রাম - ২০২১ ৭">
-                                <img src="figures/bijoy-dibos-21/bijoy-dibos-21-8.jpeg" alt="বিজয় দিবস ইসলামি সংস্কৃতি প্রোগ্রাম - ২০২১ ৮">
-                            </div>
-                            <button class="carousel-btn prev">&lt;</button>
-                            <button class="carousel-btn next">&gt;</button>
-                        </div>
-                        <h4>বিজয় দিবস ইসলামি সংস্কৃতি প্রোগ্রাম - ২০২১</h4>
-                    </div>
-                    <div class="gallery-carousel-wrapper hidden">
-                        <div class="gallery-carousel">
-                            <div class="carousel-images">
-                                <img src="figures/medical-camp-22/medical-camp-22-1.jpeg" alt="ফ্রি মেডিকেল ক্যাম্প - ২০২২ ১">
-                                <img src="figures/medical-camp-22/medical-camp-22-2.jpeg" alt="ফ্রি মেডিকেল ক্যাম্প - ২০২২ ২">
-                                <img src="figures/medical-camp-22/medical-camp-22-3.jpeg" alt="ফ্রি মেডিকেল ক্যাম্প - ২০২২ ৩">
-                                <img src="figures/medical-camp-22/medical-camp-22-4.jpeg" alt="ফ্রি মেডিকেল ক্যাম্প - ২০২২ ৪">
-                                <img src="figures/medical-camp-22/medical-camp-22-5.jpeg" alt="ফ্রি মেডিকেল ক্যাম্প - ২০২২ ৫">
-                                <img src="figures/medical-camp-22/medical-camp-22-6.jpeg" alt="ফ্রি মেডিকেল ক্যাম্প - ২০২২ ৬">
-                            </div>
-                            <button class="carousel-btn prev">&lt;</button>
-                            <button class="carousel-btn next">&gt;</button>
-                        </div>
-                        <h4>ফ্রি মেডিকেল ক্যাম্প - ২০২২</h4>
-                    </div>
+                <div class="gallery-year-tabs">
+                    <button class="gallery-year-btn active" data-year="2025">২০২৫</button>
+                    <button class="gallery-year-btn" data-year="2024">২০২৪</button>
+                    <button class="gallery-year-btn" data-year="2023">২০২৩</button>
+                    <button class="gallery-year-btn" data-year="2022">২০২২</button>
+                    <button class="gallery-year-btn" data-year="2021">২০২১</button>
+                    <button class="gallery-year-btn" data-year="2020">২০২০</button>
+                    <button class="gallery-year-btn" data-year="2019">২০১৯</button>
+                    <button class="gallery-year-btn" data-year="2018">২০১৮</button>
+                    <button class="gallery-year-btn" data-year="2017">২০১৭</button>
                 </div>
+                <div id="gallery-event-folders" class="gallery-event-folders"></div>
+                <div id="gallery-event-details" class="gallery-event-details" style="display:none;"></div>
             </div>
+
         </section>
 
         <!-- Donation Section -->
@@ -1203,92 +1157,202 @@
                 });
             });
 
-            // Gallery Carousels
-            document.querySelectorAll('.gallery-carousel').forEach(carousel => {
-                const imagesContainer = carousel.querySelector('.carousel-images');
-                const prevBtn = carousel.querySelector('.prev');
-                const nextBtn = carousel.querySelector('.next');
-                const images = imagesContainer.querySelectorAll('img');
-                
-                let currentIndex = 0;
-                const totalImages = images.length;
-                let autoPlayInterval;
+            // Gallery Event Folders
+            const galleryEventFolders = document.getElementById('gallery-event-folders');
+            const galleryEventDetails = document.getElementById('gallery-event-details');
+            const galleryYearBtns = document.querySelectorAll('.gallery-year-btn');
 
-                function updateCarousel() {
-                    imagesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-                }
-
-                function startAutoPlay() {
-                    if (totalImages <= 1) return;
-                    stopAutoPlay(); // Clear existing interval
-                    autoPlayInterval = setInterval(() => {
-                        currentIndex = (currentIndex + 1) % totalImages;
-                        updateCarousel();
-                    }, 3000); // Change image every 3 seconds
-                }
-
-                function stopAutoPlay() {
-                    clearInterval(autoPlayInterval);
-                }
-
-                if (totalImages <= 1) {
-                    prevBtn.style.display = 'none';
-                    nextBtn.style.display = 'none';
-                } else {
-                     prevBtn.addEventListener('click', () => {
-                        currentIndex = (currentIndex - 1 + totalImages) % totalImages;
-                        updateCarousel();
-                        startAutoPlay(); // Restart autoplay
-                    });
-
-                    nextBtn.addEventListener('click', () => {
-                        currentIndex = (currentIndex + 1) % totalImages;
-                        updateCarousel();
-                        startAutoPlay(); // Restart autoplay
-                    });
+            // Gallery Data (Sample, replace with real data as needed)
+            const events = {
+                2025: [
+                    { title: 'ফ্রী মেডিকেল ক্যাম্প ২০২৫ (আপকামিং)', date: '৩৬ জুলাই (৫ ই আগস্ট, ২০২৫)', location: 'সাছিয়াখালী, ফরিদগঞ্জ, চাঁদপুর', images: [
+                        'figures/p-16-9-6.png',
+                    ] }
+                ],
+                2024: [
+                    { title: 'ফ্রী মেডিকেল ক্যাম্প ২০২৪', date: '১৯ জুন, ২০২৪', location: 'সাছিয়াখালী বায়তুল আকসা জামে মসজিদ (তিন তলা মসজিদ) এর নিচ তলা, ফরিদগঞ্জ, চাঁদপুর', images: [
+                        'figures/medical-camp-24/received_1118837162554665.jpeg',
+                        'figures/medical-camp-24/received_1110205040052804.jpeg',
+                        'figures/medical-camp-24/received_1148614576285412.jpeg',
+                        'figures/medical-camp-24/received_1193000838545138.jpeg',
+                        'figures/medical-camp-24/received_1220073025646483.jpeg',
+                        'figures/medical-camp-24/received_448740944540199.jpeg',
+                        'figures/medical-camp-24/received_995587275287288.jpeg',
+                        'figures/medical-camp-24/received_384721424057997.jpeg'
+                    ] },
+                    { title: 'বন্যা ত্রাণ ও পূনর্বাসন কার্যক্রম -২০২৪', date: '২৫ আগস্ট, ২০২৪', location: 'সাছিয়াখালী', images: [
+                        "figures/tran-24/tran-24-1.jpeg",
+                        "figures/tran-24/tran-24-2.jpeg",
+                        "figures/tran-24/tran-24-3.jpeg",
+                        "figures/tran-24/tran-24-4.jpeg",
+                        "figures/tran-24/tran-24-5.jpeg",
+                        "figures/tran-24/tran-24-6.jpeg",
+                        "figures/tran-24/tran-24-7.jpeg",
+                        "figures/tran-24/tran-24-8.jpeg",
+                        "figures/tran-24/tran-24-9.jpeg",
+                        "figures/tran-24/tran-24-10.jpeg",
+                    ] },
+                    { title: 'বন্যা রেসকিউ - ২০২৪', date: 'আগস্ট, ২০২৪', location: 'সাছিয়াখালী', images: [
+                        'figures/rescue-24/rescue-24-1.jpeg',
+                        'figures/rescue-24/rescue-24-2.jpeg',
+                        'figures/rescue-24/rescue-24-3.jpeg',
+                        'figures/rescue-24/rescue-24-4.jpeg'
+                    ] },
+                    { title: 'বন্যা পরিস্থিতি পর্যবেক্ষণ - ২০২৪', date: 'আগস্ট, ২০২৪', location: 'সাছিয়াখালী', images: [
+                        'figures/bonna-24/bonna-24-1.jpeg',
+                        'figures/bonna-24/bonna-24-2.jpeg',
+                        'figures/bonna-24/bonna-24-3.jpeg',
+                        'figures/bonna-24/bonna-24-4.jpeg',
+                        'figures/bonna-24/bonna-24-5.jpeg',
+                        'figures/bonna-24/bonna-24-6.jpeg',
+                        'figures/bonna-24/bonna-24-7.jpeg',
+                        'figures/bonna-24/bonna-24-8.jpeg',
+                        'figures/bonna-24/bonna-24-9.jpeg'
+                    ] }
+                ],
+                2023: [
+                    { title: 'টুপি ও হিজাব বিতরণ - ২০২৩', date: 'জানুয়ারী ,২০২৩', location: 'সাছিয়াখালী সরকারি প্রাথমিক বিদ্যালয়', images: [
+                        'figures/hijab-tupi-23/hijab-tupi-23-1.jpeg',
+                        'figures/hijab-tupi-23/hijab-tupi-23-2.jpeg',
+                        'figures/hijab-tupi-23/hijab-tupi-23-3.jpeg',
+                        'figures/hijab-tupi-23/hijab-tupi-23-4.jpeg',
+                        'figures/hijab-tupi-23/hijab-tupi-23-5.jpeg',
+                        'figures/hijab-tupi-23/hijab-tupi-23-6.jpeg',
+                        'figures/hijab-tupi-23/hijab-tupi-23-7.jpeg',
+                        'figures/hijab-tupi-23/hijab-tupi-23-8.jpeg',
+                        'figures/hijab-tupi-23/hijab-tupi-23-9.jpeg',
+                    ] },
+                    { title: 'মাহফিল ২০২৩', date: 'মার্চ, ২০২৩', location: 'সাছিয়াখালী সরকারি প্রাথমিক বিদ্যালয় মাঠ', images: [
+                        'figures/mahfil-23.jpeg'
+                    ] }
+                ],
+                2022: [
+                    { title: 'ঈদুল ফিতর উপহার সামগ্রী বিতরণ', date: 'মে, ২০২২', location: 'সাছিয়াখালী', images: [
+                        'figures/eid-ul-fitr-22/eid-ul-fitr-22-1.jpeg',
+                        'figures/eid-ul-fitr-22/eid-ul-fitr-22-2.jpeg',
+                        'figures/eid-ul-fitr-22/eid-ul-fitr-22-3.jpeg',
+                        'figures/eid-ul-fitr-22/eid-ul-fitr-22-4.jpeg',
+                        'figures/eid-ul-fitr-22/eid-ul-fitr-22-5.jpeg',
+                        'figures/eid-ul-fitr-22/eid-ul-fitr-22-6.jpeg'
+                    ] },
+                    { title: 'কোরবানির মাংস বিতরণ - ২০২২', date: 'জুলাই, ২০২২', location: 'সাছিয়াখালী', images: [
+                        'figures/qurbani-22/qurbani-22-1.jpeg',
+                        'figures/qurbani-22/qurbani-22-2.jpeg',
+                        'figures/qurbani-22/qurbani-22-3.jpeg',
+                        'figures/qurbani-22/qurbani-22-4.jpeg',
+                        'figures/qurbani-22/qurbani-22-5.jpeg',
+                        'figures/qurbani-22/qurbani-22-6.jpeg'
+                    ] },
+                    { title: 'ফ্রি কোরআন শিক্ষা কোর্স - ২০২২', date: 'মে - জুন, ২০২২', location: 'সাছিয়াখালী বায়তুল আকসা জামে মসজিদ', images: [
+                        'figures/quran-sikkha-22/quran-sikkha-22-1.jpeg',
+                        'figures/quran-sikkha-22/quran-sikkha-22-2.jpeg',
+                        'figures/quran-sikkha-22/quran-sikkha-22-3.jpeg',
+                        'figures/quran-sikkha-22/quran-sikkha-22-4.jpeg',
+                        'figures/quran-sikkha-22/quran-sikkha-22-5.jpeg'
+                    ] },
+                    { title: 'ফ্রি মেডিকেল ক্যাম্প - ২০২২', date: '৭ ই মে, ২০২২', location: 'সাছিয়াখালী বায়তুল আকসা জামে মসজিদ এর নিচ তলা (প্রত্যয়ের কার্যলয়)', images: [
+                        'figures/medical-camp-22/medical-camp-22-6.jpeg',
+                        'figures/medical-camp-22/medical-camp-22-1.jpeg',
+                        'figures/medical-camp-22/medical-camp-22-2.jpeg',
+                        'figures/medical-camp-22/medical-camp-22-3.jpeg',
+                        'figures/medical-camp-22/medical-camp-22-4.jpeg',
+                        'figures/medical-camp-22/medical-camp-22-5.jpeg'
+                        
+                    ] }
                     
-                    carousel.addEventListener('mouseenter', stopAutoPlay);
-                    carousel.addEventListener('mouseleave', startAutoPlay);
+                ],
+                2021: [
+                    { title: 'ত্রাণ বিতরণ ২০২১', date: 'জুলাই, ২০২১', location: 'সাছিয়াখালী', images: [
+                        'figures/p-16-9-7.png',
+                        'figures/p-16-9-8.png'
+                    ] }
+                ],
+                2020: [
+                    { title: 'কুরআন শিক্ষা ক্লাস ২০২০', date: 'জানুয়ারি-ডিসেম্বর, ২০২০', location: 'সাছিয়াখালী মসজিদ', images: [
+                        'figures/p-16-9-9.png',
+                        'figures/p-16-9-10.png'
+                    ] }
+                ],
+                2019: [
+                    { title: 'ঈদ উপহার বিতরণ ২০১৯', date: 'জুন, ২০১৯', location: 'সাছিয়াখালী', images: [
+                        'figures/p-16-9-11.png',
+                        'figures/p-16-9-12.png'
+                    ] }
+                ],
+                2018: [
+                    { title: 'প্রতিষ্ঠা অনুষ্ঠান ২০১৮', date: 'জানুয়ারি, ২০১৮', location: 'সাছিয়াখালী', images: [
+                        'figures/p-16-9-13.png',
+                        'figures/p-16-9-2.png'
+                    ] }
+                ],
+                2017: [
+                    { title: 'প্রথম সভা ২০১৭', date: 'ডিসেম্বর, ২০১৭', location: 'সাছিয়াখালী', images: [
+                        'figures/p-16-9.png',
+                        'figures/p-16-9-4.png'
+                    ] }
+                ]
+            };
 
-                    startAutoPlay();
+
+
+
+            function updateGalleryFolders(year) {
+                galleryEventFolders.innerHTML = '';
+                galleryEventDetails.style.display = 'none';
+                const selectedEvents = events[year] || [];
+                if (selectedEvents.length === 0) {
+                    galleryEventFolders.innerHTML = '<div style="grid-column: 1/-1; text-align:center; color:var(--secondary-color); font-size:1.2rem; padding:40px 0;">এই বছরে কোনো ইভেন্ট পাওয়া যায়নি।</div>';
+                    return;
                 }
-            });
-            
-            // Gallery View More
-            const viewMoreCard = document.querySelector('.view-more-card');
-            if(viewMoreCard) {
-                viewMoreCard.addEventListener('click', () => {
-                    document.querySelectorAll('.gallery-carousel-wrapper.hidden').forEach(card => {
-                        card.classList.remove('hidden');
+                selectedEvents.forEach(event => {
+                    const folderCard = document.createElement('div');
+                    folderCard.className = 'gallery-event-card';
+                    folderCard.innerHTML = `
+                        <img src="${event.images[0]}" alt="${event.title}">
+                        <h4>${event.title}</h4>
+                        <p>${event.date}</p>
+                    `;
+                    folderCard.addEventListener('click', () => {
+                        showEventDetails(event);
+                        // Scroll to event details for better UX
+                        setTimeout(() => {
+                            galleryEventDetails.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }, 100);
                     });
-                    viewMoreCard.style.display = 'none';
+                    galleryEventFolders.appendChild(folderCard);
                 });
+
             }
 
-            // QR Code Lightbox
-            const qrImages = document.querySelectorAll('.qr-code img');
-            const qrLightbox = document.querySelector('.qr-lightbox');
-            const qrLightboxImg = document.getElementById('qr-lightbox-img');
-            const closeQrBtn = document.querySelector('.close-qr-lightbox');
+            function showEventDetails(event) {
+                galleryEventDetails.innerHTML = `
+                    <h3>${event.title}</h3>
+                    <p><strong>তারিখ:</strong> ${event.date}</p>
+                    <p><strong>স্থান:</strong> ${event.location ? event.location : '---'}</p>
+                    <div class="event-images">
+                        ${event.images.map((img) => `<img src="${img}" alt="${event.title}">`).join('')}
+                    </div>
+                `;
+                galleryEventDetails.style.display = 'block';
+            }
 
-            qrImages.forEach(img => {
-                img.addEventListener('click', () => {
-                    qrLightbox.style.display = 'flex';
-                    qrLightboxImg.src = img.src;
+
+
+            // Gallery year tab click logic
+            galleryYearBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    galleryYearBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    const year = this.getAttribute('data-year');
+                    updateGalleryFolders(year);
                 });
             });
 
-            const closeQrLightbox = () => {
-                qrLightbox.style.display = 'none';
+            // Initial load for current year
+            const defaultYearBtn = document.querySelector('.gallery-year-btn.active');
+            if (defaultYearBtn) {
+                updateGalleryFolders(defaultYearBtn.getAttribute('data-year'));
             }
-
-            closeQrBtn.addEventListener('click', closeQrLightbox);
-            qrLightbox.addEventListener('click', (e) => {
-                if (e.target === qrLightbox) {
-                    closeQrLightbox();
-                }
-            });
-
         });
     </script>
 </body>
